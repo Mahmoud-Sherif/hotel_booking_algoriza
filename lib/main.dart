@@ -5,6 +5,8 @@ import 'package:hotel_booking_algoriza/features/home/data/models/hotels_model.da
 import 'package:hotel_booking_algoriza/features/intro/presentation/pages/onboarding_page.dart';
 import 'package:hotel_booking_algoriza/features/intro/presentation/pages/splash_page.dart';
 
+import 'core/utils/theme_manager.dart';
+import 'features/auth/presentation/pages/login.dart';
 import 'features/booking/data/models/booking_hotels_model.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: TestApi(),
     );
   }
