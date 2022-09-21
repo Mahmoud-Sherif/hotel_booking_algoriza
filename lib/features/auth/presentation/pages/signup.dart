@@ -53,6 +53,16 @@ class SignupView extends StatelessWidget {
               'First name',
               style: Theme.of(context).textTheme.displaySmall,
             ),
+            const CustomInputField(hintText: 'enter first name'),
+            Text(
+              'Last name',
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const CustomInputField(hintText: 'enter last name'),
+            Text(
+              'Your email',
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
             const CustomInputField(hintText: 'enter email'),
             Text(
               'Password',
