@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_algoriza/core/dio_helper.dart';
 import 'package:hotel_booking_algoriza/features/home/data/models/hotels_model.dart';
 
+import 'core/utils/theme_manager.dart';
+import 'features/auth/presentation/pages/login.dart';
 import 'features/booking/data/models/booking_hotels_model.dart';
 
 void main() {
@@ -13,8 +15,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TestApi(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      darkTheme: getApplicationTheme(),
+      home: const LoginView(),
     );
   }
 }
