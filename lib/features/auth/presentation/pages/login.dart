@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/values_manager.dart';
+import 'package:hotel_booking_algoriza/core/widgets/main_button.dart';
 import 'package:hotel_booking_algoriza/features/auth/presentation/widgets/login_signup_with.dart';
 
 import '../../../../core/widgets/custom_input_field.dart';
@@ -65,6 +66,7 @@ class LoginView extends StatelessWidget {
                   onPressed: () {},
                   child: const Text('Forgot your Password ?')),
             ),
+            MainButton(text: 'Login')
           ],
         ),
       ),
