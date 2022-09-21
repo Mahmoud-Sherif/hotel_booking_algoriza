@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_algoriza/core/dio_helper.dart';
 import 'package:hotel_booking_algoriza/features/home/data/models/hotels_model.dart';
+import 'package:hotel_booking_algoriza/features/intro/presentation/pages/onboarding_page.dart';
+import 'package:hotel_booking_algoriza/features/intro/presentation/pages/splash_page.dart';
 
 import 'core/utils/theme_manager.dart';
 import 'features/auth/presentation/pages/login.dart';
@@ -15,10 +17,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      darkTheme: getApplicationTheme(),
-      home: const LoginView(),
+    return const MaterialApp(
+      home: TestApi(),
     );
   }
 }
