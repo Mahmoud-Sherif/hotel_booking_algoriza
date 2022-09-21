@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
-import 'package:hotel_booking_algoriza/core/utils/values_manager.dart';
+import 'package:hotel_booking_algoriza/core/widgets/main_button.dart';
 import 'package:hotel_booking_algoriza/features/auth/presentation/widgets/login_signup_with.dart';
 
 import '../../../../core/widgets/custom_input_field.dart';
@@ -15,7 +15,7 @@ class SignupView extends StatelessWidget {
         title: const Text('data'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,11 +69,42 @@ class SignupView extends StatelessWidget {
               style: Theme.of(context).textTheme.displaySmall,
             ),
             const CustomInputField(hintText: 'enter password'),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                  onPressed: () {},
-                  child: const Text('Forgot your Password ?')),
+            const SizedBox(height: 10),
+            MainButton(text: "Sign up"),
+            const SizedBox(height: 5),
+            Center(
+              child: Text(
+                "By signing up, you agreed ",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Center(
+              child: Text(
+                "with our TOS and PP",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have account ?',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Login',
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(color: ColorManager.primary),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
