@@ -8,17 +8,19 @@ class MainButton extends StatelessWidget {
     this.backgroundColor = ColorManager.primary,
     this.foregroundColor = ColorManager.white,
     this.horizontalPadding = 0,
+    this.width = double.infinity,
   }) : super(key: key);
   final String text;
   final Color? backgroundColor;
   final Color? foregroundColor;
   final double horizontalPadding;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: SizedBox(
-        width: double.infinity,
+        width: width,
         height: 50,
         child: ElevatedButton(
           onPressed: () {},

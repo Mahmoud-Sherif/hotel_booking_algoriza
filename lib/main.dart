@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_algoriza/core/dio_helper.dart';
+import 'package:hotel_booking_algoriza/features/home/presentation/pages/home_view.dart';
 import 'core/utils/theme_manager.dart';
 import 'features/booking/data/models/booking_hotels_model.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const TestApi(),
+      home: const HomeView(),
       theme: getApplicationTheme(),
     );
   }
