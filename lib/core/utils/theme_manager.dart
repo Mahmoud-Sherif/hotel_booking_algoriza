@@ -102,13 +102,13 @@ ThemeData getApplicationTheme() {
     //         borderSide:
     //             BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
     //         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
-    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    //   backgroundColor: ColorManager.darkGrey,
-    //   unselectedItemColor: ColorManager.lightGrey,
-    //   showUnselectedLabels: false,
-    //   selectedItemColor: ColorManager.white,
-    //   selectedIconTheme: const IconThemeData(size: AppSize.s30),
-    // ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.secondry,
+      unselectedItemColor: ColorManager.grey,
+      showUnselectedLabels: true,
+      selectedItemColor: ColorManager.primary,
+      selectedIconTheme: IconThemeData(size: AppSize.s30),
+    ),
     // // label style
   );
 }

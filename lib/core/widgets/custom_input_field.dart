@@ -7,8 +7,10 @@ class CustomInputField extends StatelessWidget {
   const CustomInputField({
     Key? key,
     this.hintText,
+    this.prefixIcon,
   }) : super(key: key);
   final String? hintText;
+  final Widget? prefixIcon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,6 +32,7 @@ class CustomInputField extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               style: const TextStyle(fontSize: 14),
               decoration: InputDecoration(
+                prefixIcon: prefixIcon,
                 // label: const Text("Email"),
                 labelStyle: const TextStyle(color: Colors.grey),
                 filled: true,
@@ -39,28 +42,24 @@ class CustomInputField extends StatelessWidget {
                     TextStyle(color: ColorManager.lightGrey.withOpacity(0.75)),
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide:
                       BorderSide(color: ColorManager.secondry, width: 1.0),
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(AppSize.s30)),
+                  borderRadius: BorderRadius.all(Radius.circular(AppSize.s30)),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide:
                       BorderSide(color: ColorManager.secondry, width: 1.0),
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(AppSize.s30)),
+                  borderRadius: BorderRadius.all(Radius.circular(AppSize.s30)),
                 ),
-                errorBorder: OutlineInputBorder(
+                errorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: ColorManager.error, width: 1.0),
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(AppSize.s30)),
+                  borderRadius: BorderRadius.all(Radius.circular(AppSize.s30)),
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide:
                       BorderSide(color: ColorManager.secondry, width: 1.0),
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(AppSize.s30)),
+                  borderRadius: BorderRadius.all(Radius.circular(AppSize.s30)),
                 ),
               ),
             ),
