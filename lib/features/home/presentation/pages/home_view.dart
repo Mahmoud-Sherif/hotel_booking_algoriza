@@ -4,6 +4,7 @@ import 'package:hotel_booking_algoriza/features/explore/presentation/pages/explo
 import 'package:hotel_booking_algoriza/features/profile/presentation/pages/profile_view.dart';
 import 'package:hotel_booking_algoriza/features/trips/presentation/pages/trips_view.dart';
 import '../../../../core/const/enums.dart';
+import '../../../trips/presentation/pages/trips_page.dart';
 import '../cubit/navigation_cubit.dart';
 import '../widgets/bottom_navigation.dart';
 
@@ -22,7 +23,7 @@ class HomeView extends StatelessWidget {
             if (state.navbarItem == NavbarItem.explore) {
               return ExploreView();
             } else if (state.navbarItem == NavbarItem.trips) {
-              return const TripsView();
+              return const TripsPage();
             } else if (state.navbarItem == NavbarItem.profile) {
               return const ProfileView();
             }
