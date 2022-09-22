@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
         body: BlocBuilder<NavigationCubit, NavigationState>(
           builder: (context, state) {
             if (state.navbarItem == NavbarItem.explore) {
-              return const ExploreView();
+              return ExploreView();
             } else if (state.navbarItem == NavbarItem.trips) {
               return const TripsView();
             } else if (state.navbarItem == NavbarItem.profile) {
