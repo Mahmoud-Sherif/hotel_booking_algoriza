@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
 import 'package:hotel_booking_algoriza/core/utils/values_manager.dart';
@@ -7,6 +8,7 @@ import 'package:hotel_booking_algoriza/core/widgets/main_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 part '../widgets/indicator_view_hotel_btn.dart';
 part '../widgets/best_hotel_widgets.dart';
+part '../widgets/best_deal_card.dart';
 
 class ExploreView extends StatelessWidget {
   ExploreView({super.key});
@@ -44,45 +46,34 @@ class ExploreView extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
-              width: context.width / 2,
-              height: 200,
-              color: Colors.grey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Best Deals",
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  TextButton.icon(
+                    style: const ButtonStyle(
+                      foregroundColor:
+                          MaterialStatePropertyAll<Color>(ColorManager.primary),
+                    ),
+                    onPressed: () {},
+                    icon: const Text('View all'),
+                    label: const Icon(Icons.arrow_forward),
+                  )
+                ],
+              ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              width: context.width / 2,
-              height: 200,
-              color: Colors.blue,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              width: context.width / 2,
-              height: 200,
-              color: Colors.orange,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              width: context.width / 2,
-              height: 200,
-              color: Colors.grey,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              width: context.width / 2,
-              height: 200,
-              color: Colors.blue,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              width: context.width / 2,
-              height: 200,
-              color: Colors.orange,
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 8,
+              (context, index) {
+                return const BestDealWidget();
+              },
             ),
           ),
         ],
