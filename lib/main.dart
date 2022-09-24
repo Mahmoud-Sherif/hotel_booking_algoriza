@@ -1,10 +1,19 @@
+import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_algoriza/core/dio_helper.dart';
+import 'package:hotel_booking_algoriza/core/api/api_consumer.dart';
+import 'package:hotel_booking_algoriza/core/api/dio_consumer.dart';
+import 'package:hotel_booking_algoriza/core/api/end_points.dart';
 import 'package:hotel_booking_algoriza/features/home/presentation/pages/home_view.dart';
+import 'bloc_observer.dart';
 import 'core/utils/theme_manager.dart';
-import 'features/booking/data/models/booking_hotels_model.dart';
+import 'injection_container.dart' as di;
+import 'injection_container.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = AppBlocObserver();
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -14,33 +23,42 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const HomeView(),
+      // home: TestApi(apiConsumer: sl<ApiConsumer>()),
       theme: getApplicationTheme(),
     );
   }
 }
 
-class TestApi extends StatefulWidget {
-  const TestApi({super.key});
+// class TestApi extends StatefulWidget {
+//   TestApi({
+//     super.key,
+//     required this.apiConsumer,
+//   });
 
-  @override
-  State<TestApi> createState() => _TestApiState();
-}
+//   ApiConsumer apiConsumer;
 
-class _TestApiState extends State<TestApi> {
-  @override
-  void initState() {
-    testApi();
-    super.initState();
-  }
+//   @override
+//   State<TestApi> createState() => _TestApiState();
+// }
 
-  testApi() async {
-    final response = await DioHelper.testApi();
-    BookingHotelsModel data = BookingHotelsModel.fromJson(response.data);
-    print(data.hotelModel.booking[0].hotel.name);
-  }
+// class _TestApiState extends State<TestApi> {
+//   @override
+//   void initState() {
+//     testApi();
+//     super.initState();
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
+//   testApi() async {
+//     final response = await widget.apiConsumer.get(EndPoints.profileInfo);
+//     // print(response);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: Text("ahahah"),
+//       ),
+//     );
+//   }
+// }
