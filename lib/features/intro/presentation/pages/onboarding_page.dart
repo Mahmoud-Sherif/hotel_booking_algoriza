@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
+import 'package:hotel_booking_algoriza/features/auth/presentation/pages/login.dart';
+import 'package:hotel_booking_algoriza/features/auth/presentation/pages/signup.dart';
 import 'package:hotel_booking_algoriza/features/intro/data/models/onboarding_model.dart';
 import 'package:hotel_booking_algoriza/features/intro/presentation/widgets/onboarding_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -78,7 +81,9 @@ class OnBoardingPage extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MagicRouter.navigateTo(LoginView());
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: const Color(0xff4fbe9e),
@@ -101,7 +106,9 @@ class OnBoardingPage extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MagicRouter.navigateTo(SignupView());
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,

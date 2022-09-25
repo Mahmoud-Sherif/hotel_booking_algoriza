@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking_algoriza/features/explore/presentation/pages/explore_view.dart';
 import 'package:hotel_booking_algoriza/features/profile/presentation/pages/profile_view.dart';
-import 'package:hotel_booking_algoriza/features/trips/presentation/pages/trips_view.dart';
 import '../../../../core/const/enums.dart';
 import '../../../trips/presentation/pages/trips_page.dart';
 import '../cubit/navigation_cubit.dart';

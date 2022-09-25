@@ -4,7 +4,7 @@ class UserModel {
   final String name;
   final String email;
   final String? emailVerified;
-  final String image;
+  final String? image;
   final String createdAt;
   final String updatedAt;
   final String? googleId;
@@ -32,7 +32,7 @@ class UserModel {
       createdAt: json['created_at'],
       emailVerified: json['email_verified_at'] ?? 'null',
       googleId: json['google_id'] ?? 'null',
-      image: json['image'],
+      image: json['image'] ?? 'null',
       provider: json['provider'] ?? 'null',
       updatedAt: json['updated_at'],
     );
