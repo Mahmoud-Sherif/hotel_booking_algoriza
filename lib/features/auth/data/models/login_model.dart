@@ -3,11 +3,11 @@ import 'package:hotel_booking_algoriza/core/models/user_model.dart';
 
 class LoginModel {
   final StatusModel status;
-  final UserModel? user;
+  final UserModel user;
 
   LoginModel({
     required this.status,
-    this.user,
+    required this.user,
   });
   factory LoginModel.fromJson(Map<String, dynamic> json) {
     return LoginModel(

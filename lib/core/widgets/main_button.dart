@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 
 class MainButton extends StatelessWidget {
-  const MainButton({
+  MainButton({
     Key? key,
     required this.text,
     this.backgroundColor = ColorManager.primary,
     this.foregroundColor = ColorManager.white,
     this.horizontalPadding = 0,
     this.width = double.infinity,
-    this.onPressed,
   }) : super(key: key);
   final String text;
   final Color? backgroundColor;
   final Color? foregroundColor;
   final double horizontalPadding;
   final double? width;
-  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +23,7 @@ class MainButton extends StatelessWidget {
         width: width,
         height: 50,
         child: ElevatedButton(
-          onPressed: onPressed,
+          onPressed: () {},
           style: ElevatedButton.styleFrom(
             foregroundColor: foregroundColor,
             backgroundColor: backgroundColor,

@@ -13,6 +13,7 @@ import 'package:hotel_booking_algoriza/injection_container.dart' as di;
 
 class DioConsumer implements ApiConsumer {
   final Dio client;
+
   DioConsumer({required this.client}) {
     (client.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
@@ -20,6 +21,7 @@ class DioConsumer implements ApiConsumer {
           (X509Certificate cert, String host, int port) => true;
       return client;
     };
+
     client.options
       ..baseUrl = EndPoints.baseUrl
       ..responseType = ResponseType.plain
@@ -32,6 +34,7 @@ class DioConsumer implements ApiConsumer {
       client.interceptors.add(di.sl<LogInterceptor>());
     }
   }
+
   @override
   Future get(String path, {Map<String, dynamic>? queryParameters}) async {
     try {
@@ -51,6 +54,19 @@ class DioConsumer implements ApiConsumer {
       final response = await client.post(path,
           queryParameters: queryParameters,
           data: formDataIsEnabled ? FormData.fromMap(body!) : body);
+      return _handleResponseAsJson(response);
+    } on DioError catch (error) {
+      _handleDioError(error);
+    }
+  }
+
+  @override
+  Future put(String path,
+      {Map<String, dynamic>? body,
+      Map<String, dynamic>? queryParameters}) async {
+    try {
+      final response =
+          await client.put(path, queryParameters: queryParameters, data: body);
       return _handleResponseAsJson(response);
     } on DioError catch (error) {
       _handleDioError(error);

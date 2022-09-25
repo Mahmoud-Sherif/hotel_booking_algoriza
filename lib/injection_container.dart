@@ -1,54 +1,46 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hotel_booking_algoriza/features/auth/data/datasources/local/autl_local_data_source.dart';
-import 'package:hotel_booking_algoriza/features/auth/data/datasources/remote/auth_remote_data_source.dart';
-import 'package:hotel_booking_algoriza/features/auth/data/repositories/auth_repo_impl.dart';
-import 'package:hotel_booking_algoriza/features/auth/domain/repositories/auth_repo.dart';
-import 'package:hotel_booking_algoriza/features/auth/domain/usecases/register_usecase.dart';
-import 'package:hotel_booking_algoriza/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'core/api/api_consumer.dart';
 import 'core/api/app_interceptors.dart';
 import 'core/api/dio_consumer.dart';
 import 'core/network/netwok_info.dart';
-import 'features/auth/domain/usecases/login_usecase copy.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
   //! Features
 
-  //! Blocs
-  sl.registerFactory<AuthCubit>(
-    () => AuthCubit(
-      loginUseCase: sl(),
-      registerUseCase: sl(),
-    ),
-  );
+  // Blocs
+  // sl.registerFactory<RandomQuoteCubit>(
+  //     () => RandomQuoteCubit(getRandomQuoteUseCase: sl()));
   // sl.registerFactory<LocaleCubit>(
   //     () => LocaleCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
 
   // Use cases
-  sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(authRepo: sl()));
-  sl.registerLazySingleton<RegisterUseCase>(
-      () => RegisterUseCase(authRepo: sl()));
+  // sl.registerLazySingleton<GetRandomQuote>(
+  //     () => GetRandomQuote(quoteRepository: sl()));
   // sl.registerLazySingleton<GetSavedLangUseCase>(
   //     () => GetSavedLangUseCase(langRepository: sl()));
   // sl.registerLazySingleton<ChangeLangUseCase>(
   //     () => ChangeLangUseCase(langRepository: sl()));
 
   // Repository
-  sl.registerLazySingleton<AuthRepository>(
-    () => AuthRepositoryImpl(
-        authRemoteDatasource: sl(), authLocalDataSource: sl()),
-  );
+  // sl.registerLazySingleton<QuoteRepository>(() => QuoteRepositoryImpl(
+  //     networkInfo: sl(),
+  //     randomQuoteRemoteDataSource: sl(),
+  //     randomQuoteLocalDataSource: sl()));
+  // sl.registerLazySingleton<LangRepository>(
+  //     () => LangRepositoryImpl(langLocalDataSource: sl()));
 
-  // Data Sources
-  sl.registerLazySingleton<AuthRemoteDatasource>(
-      () => AuthRemoteDatasourceImpl(apiConsumer: sl()));
-  sl.registerLazySingleton<AuthLocalDataSource>(
-      () => AuthLocalDataSourceImpl(sharedPreferences: sl()));
+  // // Data Sources
+  // sl.registerLazySingleton<RandomQuoteLocalDataSource>(
+  //     () => RandomQuoteLocalDataSourceImpl(sharedPreferences: sl()));
+  // sl.registerLazySingleton<RandomQuoteRemoteDataSource>(
+  //     () => RandomQuoteRemoteDataSourceImpl(apiConsumer: sl()));
+  // sl.registerLazySingleton<LangLocalDataSource>(
+  //     () => LangLocalDataSourceImpl(sharedPreferences: sl()));
 
   //! Core
   sl.registerLazySingleton<NetworkInfo>(
@@ -56,8 +48,8 @@ Future<void> init() async {
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
 
   //! External
-  final sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingleton(() => sharedPreferences);
+  // final sharedPreferences = await SharedPreferences.getInstance();
+  // sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => AppIntercepters());
   sl.registerLazySingleton(() => LogInterceptor(
       request: true,

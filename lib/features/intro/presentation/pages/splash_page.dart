@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/features/intro/presentation/pages/onboarding_page.dart';
-
-import '../../../auth/presentation/pages/login.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -92,9 +89,7 @@ class _SplashPageState extends State<SplashPage> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {
-                          MagicRouter.navigateAndPopAll(OnBoardingPage());
-                        },
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: const Color(0xff4fbe9e),
@@ -120,9 +115,7 @@ class _SplashPageState extends State<SplashPage> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {
-                          MagicRouter.navigateTo(LoginView());
-                        },
+                        onPressed: () {},
                         child: const Text(
                           'Log in',
                           style: TextStyle(

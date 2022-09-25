@@ -3,19 +3,14 @@ import '../utils/color_manager.dart';
 import '../utils/values_manager.dart';
 
 class CustomInputField extends StatelessWidget {
-  final TextEditingController inputController;
+  // final TextEditingController inputController;
   const CustomInputField({
     Key? key,
     this.hintText,
     this.prefixIcon,
-    this.formKey,
-    required this.inputController,
-    this.obscureText = false,
   }) : super(key: key);
   final String? hintText;
   final Widget? prefixIcon;
-  final Key? formKey;
-  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,13 +28,12 @@ class CustomInputField extends StatelessWidget {
                   color: ColorManager.grey.withOpacity(.1)),
             ]),
             child: TextField(
-              obscureText: obscureText,
-              key: formKey,
-              controller: inputController,
+              // controller: inputController,
               keyboardType: TextInputType.emailAddress,
               style: const TextStyle(fontSize: 14),
               decoration: InputDecoration(
                 prefixIcon: prefixIcon,
+                // label: const Text("Email"),
                 labelStyle: const TextStyle(color: Colors.grey),
                 filled: true,
                 fillColor: ColorManager.secondry,

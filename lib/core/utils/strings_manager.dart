@@ -12,6 +12,4 @@ class AppStrings {
   static const String locale = 'locale';
   static const String token =
       'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u';
-  static const String cachedUserData = 'CACHED_USER_DATA';
-  static const String cachedToken = 'CACHED_Token';
 }

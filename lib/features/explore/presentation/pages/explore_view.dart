@@ -13,8 +13,6 @@ part '../widgets/best_deal_card.dart';
 class ExploreView extends StatelessWidget {
   ExploreView({super.key});
   final PageController boardController = PageController();
-  final _conSearch = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +23,12 @@ class ExploreView extends StatelessWidget {
             toolbarHeight: context.toPadding * 2,
             pinned: true,
             // floating: true,
-            title: CustomInputField(
+            title: const CustomInputField(
               hintText: "Where are you going ?",
-              prefixIcon: const Icon(
+              prefixIcon: Icon(
                 Icons.search,
                 color: ColorManager.lightGrey,
               ),
-              inputController: _conSearch,
             ),
             expandedHeight: context.height / 2,
             flexibleSpace: FlexibleSpaceBar(
