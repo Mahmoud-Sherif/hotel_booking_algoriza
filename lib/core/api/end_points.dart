@@ -1,5 +1,6 @@
 class EndPoints {
   static const String baseUrl = 'http://api.mahmoudtaha.com/api';
+  static const String imageBaseUrl = 'http://api.mahmoudtaha.com/images/';
   static const String explorHotels = '$baseUrl/hotels';
   static const String authRegister = '$baseUrl/auth/register';
   static const String authLogin = '$baseUrl/auth/login';

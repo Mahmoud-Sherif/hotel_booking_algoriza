@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/models/register_model.dart';
-import 'package:hotel_booking_algoriza/features/auth/domain/usecases/login_usecase%20copy.dart';
+import 'package:hotel_booking_algoriza/features/auth/domain/usecases/login_usecase.dart';
 import 'package:hotel_booking_algoriza/features/auth/domain/usecases/register_usecase.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/utils/strings_manager.dart';

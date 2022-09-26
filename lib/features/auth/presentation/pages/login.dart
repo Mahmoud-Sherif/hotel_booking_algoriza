@@ -7,7 +7,7 @@ import 'package:hotel_booking_algoriza/core/api/dio_consumer.dart';
 import 'package:hotel_booking_algoriza/core/widgets/main_button.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/datasources/remote/auth_remote_data_source.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/repositories/auth_repo_impl.dart';
-import 'package:hotel_booking_algoriza/features/auth/domain/usecases/login_usecase%20copy.dart';
+import 'package:hotel_booking_algoriza/features/auth/domain/usecases/login_usecase.dart';
 import 'package:hotel_booking_algoriza/features/auth/domain/usecases/register_usecase.dart';
 import 'package:hotel_booking_algoriza/features/auth/presentation/widgets/login_signup_with.dart';
 import 'package:hotel_booking_algoriza/features/home/presentation/pages/home_view.dart';
