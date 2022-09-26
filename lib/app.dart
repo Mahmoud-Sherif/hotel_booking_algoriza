@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => sl<AuthCubit>())],
       child: MaterialApp(
-        // home: sl<AuthLocalDataSource>().isLogged
-        //     ? const HomeView()
-        //     : const SplashPage(),
+        home: sl<AuthLocalDataSource>().isLogged
+            ? const HomeView()
+            : const SplashPage(),
         // home: TestApi(apiConsumer: sl<ApiConsumer>()),
-        home: const MapTest(),
+        // home: const MapTest(),
         theme: getApplicationTheme(),
         onGenerateRoute: onGenerateRoute,
         navigatorKey: navigatorKey,
