@@ -8,3 +8,12 @@ abstract class TripsState extends Equatable {
 }
 
 class TripsInitial extends TripsState {}
+
+class TripsLoadingState extends TripsState {}
+
+class TripsSuccessState extends TripsState {}
+
+class TripsErrorState extends TripsState {
+  final String error;
+  const TripsErrorState(this.error);
+}
