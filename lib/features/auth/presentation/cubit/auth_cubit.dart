@@ -20,7 +20,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> login(LoginParams params) async {
     emit(LoginLodaing());
-
     Either<Failure, LoginModel> response = await loginUseCase(params);
     emit(
       response.fold(
