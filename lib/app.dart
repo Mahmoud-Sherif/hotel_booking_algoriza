@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/datasources/local/autl_local_data_source.dart';
+import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_widget.dart';
 import 'package:hotel_booking_algoriza/features/home/presentation/pages/home_view.dart';
 import 'package:hotel_booking_algoriza/features/intro/presentation/pages/splash_page.dart';
 import 'core/utils/theme_manager.dart';
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => sl<AuthCubit>())],
       child: MaterialApp(
-        home: sl<AuthLocalDataSource>().isLogged
-            ? const HomeView()
-            : const SplashPage(),
+        // home: sl<AuthLocalDataSource>().isLogged
+        //     ? const HomeView()
+        //     : const SplashPage(),
         // home: TestApi(apiConsumer: sl<ApiConsumer>()),
+        home: const MapTest(),
         theme: getApplicationTheme(),
         onGenerateRoute: onGenerateRoute,
         navigatorKey: navigatorKey,
