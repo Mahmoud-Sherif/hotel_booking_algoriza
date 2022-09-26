@@ -3,7 +3,7 @@ import 'package:hotel_booking_algoriza/features/auth/data/models/login_model.dar
 import 'package:hotel_booking_algoriza/features/auth/data/models/register_model.dart';
 
 import '../../../../core/error/failures.dart';
-import '../usecases/login_usecase copy.dart';
+import '../usecases/login_usecase.dart';
 import '../usecases/register_usecase.dart';
 
 abstract class AuthRepository {

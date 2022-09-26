@@ -6,7 +6,7 @@ import 'package:hotel_booking_algoriza/features/auth/data/models/register_model.
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/repositories/auth_repo.dart';
-import '../../domain/usecases/login_usecase copy.dart';
+import '../../domain/usecases/login_usecase.dart';
 import '../../domain/usecases/register_usecase.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
 

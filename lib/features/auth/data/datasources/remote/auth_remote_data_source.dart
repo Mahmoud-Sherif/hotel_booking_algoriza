@@ -3,7 +3,7 @@ import 'package:hotel_booking_algoriza/core/api/end_points.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/models/login_model.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/models/register_model.dart';
 
-import '../../../domain/usecases/login_usecase copy.dart';
+import '../../../domain/usecases/login_usecase.dart';
 import '../../../domain/usecases/register_usecase.dart';
 
 abstract class AuthRemoteDatasource {

@@ -3,18 +3,24 @@ part of '../pages/explore_view.dart';
 class BestHotelsWidget extends StatelessWidget {
   BestHotelsWidget({
     Key? key,
+    required this.hotelData,
   }) : super(key: key);
   final PageController boardController = PageController();
-
+  final HotelModel hotelData;
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.asset(
-          'assets/images/capetown.jpg',
-          fit: BoxFit.fitHeight,
-        ),
+        hotelData.hotelImages.isEmpty
+            ? Image.asset(
+                'assets/images/capetown.jpg',
+                fit: BoxFit.fitHeight,
+              )
+            : Image.network(
+                EndPoints.imageBaseUrl + hotelData.hotelImages[0].image,
+                fit: BoxFit.cover,
+              ),
         Padding(
           padding: const EdgeInsets.symmetric(
               vertical: AppPadding.p20, horizontal: AppPadding.p20),
@@ -24,24 +30,18 @@ class BestHotelsWidget extends StatelessWidget {
             children: [
               const SizedBox(height: 100),
               Text(
-                'Cape Town',
+                hotelData.name,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               const SizedBox(height: 5),
               Text(
-                'Extraodinart five-star',
+                hotelData.description,
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
                     .copyWith(fontWeight: FontWeight.w400, fontSize: 18),
               ),
-              Text(
-                'outdoor activites',
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium!
-                    .copyWith(fontWeight: FontWeight.w400, fontSize: 18),
-              ),
+
               const SizedBox(height: 10),
               // MainButton(
               //   text: "View Hotel",
