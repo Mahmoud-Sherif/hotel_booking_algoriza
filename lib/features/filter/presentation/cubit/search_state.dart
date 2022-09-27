@@ -12,3 +12,7 @@ class SearchInitial extends SearchStates {}
 class SearchLoadingState extends SearchStates {}
 
 class SearchSuccessState extends SearchStates {}
+
+class SearchToMapstate extends SearchStates {}
+
+class MapToSearchstate extends SearchStates {}

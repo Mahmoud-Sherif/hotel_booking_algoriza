@@ -27,4 +27,12 @@ class SearchCubit extends Cubit<SearchStates> {
     debugPrint(searchedForHotels!.status.type);
     emit(SearchSuccessState());
   }
+
+  navigateToMap() {
+    emit(SearchToMapstate());
+  }
+
+  navigateToSearch() {
+    emit(MapToSearchstate());
+  }
 }
