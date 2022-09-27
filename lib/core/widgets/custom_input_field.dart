@@ -11,11 +11,13 @@ class CustomInputField extends StatelessWidget {
     this.formKey,
     required this.inputController,
     this.obscureText = false,
+    this.onTap,
   }) : super(key: key);
   final String? hintText;
   final Widget? prefixIcon;
   final Key? formKey;
   final bool obscureText;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,6 +35,7 @@ class CustomInputField extends StatelessWidget {
                   color: ColorManager.grey.withOpacity(.1)),
             ]),
             child: TextField(
+              onTap: onTap,
               obscureText: obscureText,
               key: formKey,
               controller: inputController,
