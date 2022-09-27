@@ -12,12 +12,14 @@ class CustomInputField extends StatelessWidget {
     required this.inputController,
     this.obscureText = false,
     this.onTap,
+    this.onSubmitted,
   }) : super(key: key);
   final String? hintText;
   final Widget? prefixIcon;
   final Key? formKey;
   final bool obscureText;
   final Function()? onTap;
+  final Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,6 +38,7 @@ class CustomInputField extends StatelessWidget {
             ]),
             child: TextField(
               onTap: onTap,
+              onSubmitted: onSubmitted,
               obscureText: obscureText,
               key: formKey,
               controller: inputController,

@@ -1,5 +1,4 @@
 import 'package:hotel_booking_algoriza/core/models/status_model.dart';
-import 'package:hotel_booking_algoriza/core/models/user_model.dart';
 
 class SearchHotelsModel {
   final StatusModel status;
@@ -128,7 +127,7 @@ class HotelsDataModel {
   final String lastPageUrl;
   final String? nextPageUrl;
   final String path;
-  final int hotelPerPage;
+  final String hotelPerPage;
   final String? previewPageUrl;
   final int to;
   final int total;

@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
+import 'package:hotel_booking_algoriza/features/filter/data/models/search_hotels_model.dart';
 
 class SearchResultWidget extends StatelessWidget {
+  final SearchHotelsModel? item;
+  final int index;
   const SearchResultWidget({
     Key? key,
+    this.item,
+    this.index = 0,
   }) : super(key: key);
 
   @override
@@ -34,14 +39,18 @@ class SearchResultWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(20),
                       topLeft: Radius.circular(20),
                     ),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                      image: item!
+                              .hotelModel.search[index].hotelImages.isNotEmpty
+                          ? NetworkImage(
+                              'http://api.mahmoudtaha.com/images/${item!.hotelModel.search[index].hotelImages[0].image}')
+                          : const NetworkImage(
+                              'https://hiueduonline.com/wp-content/plugins/tutor/assets/images/placeholder.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -76,14 +85,14 @@ class SearchResultWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Grand Royal Hotel',
+                        item!.hotelModel.search[index].name,
                         style: Theme.of(context)
                             .textTheme
                             .displayMedium!
                             .copyWith(fontSize: 18),
                       ),
                       Text(
-                        '\$180',
+                        '\$ ${item!.hotelModel.search[index].price}',
                         style: Theme.of(context)
                             .textTheme
                             .displayMedium!
@@ -98,21 +107,21 @@ class SearchResultWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Text(
-                            'Wembley, London',
-                            style: TextStyle(
+                            item!.hotelModel.search[index].address,
+                            style: const TextStyle(
                               fontSize: 12,
                               color: Colors.grey,
                             ),
                           ),
-                          SizedBox(width: 10),
-                          Icon(
+                          const SizedBox(width: 10),
+                          const Icon(
                             Icons.location_on_rounded,
                             size: 16,
                             color: Color(0xff4fbe9e),
                           ),
-                          Text(
+                          const Text(
                             '2.0km to city',
                             style: TextStyle(
                               fontSize: 12,
@@ -139,7 +148,8 @@ class SearchResultWidget extends StatelessWidget {
                       RatingBar.builder(
                         minRating: 1,
                         maxRating: 5,
-                        initialRating: 4.5,
+                        initialRating:
+                            double.parse(item!.hotelModel.search[index].rate),
                         allowHalfRating: true,
                         direction: Axis.horizontal,
                         itemCount: 5,
