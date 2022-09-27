@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/core/api/end_points.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
@@ -13,6 +14,7 @@ import 'package:hotel_booking_algoriza/features/explore/presentation/cubit/explo
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../injection_container.dart';
+import '../../../filter/presentation/pages/search_view.dart';
 part '../widgets/indicator_view_hotel_btn.dart';
 part '../widgets/best_hotel_widgets.dart';
 part '../widgets/best_deal_card.dart';
@@ -46,7 +48,7 @@ class ExploreView extends StatelessWidget {
               body: CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    backgroundColor: Color.fromARGB(0, 36, 23, 23),
+                    backgroundColor: const Color.fromARGB(0, 36, 23, 23),
                     toolbarHeight: context.toPadding * 2,
                     pinned: true,
                     // floating: true,
@@ -57,6 +59,7 @@ class ExploreView extends StatelessWidget {
                         color: ColorManager.lightGrey,
                       ),
                       inputController: _conSearch,
+                      onTap: () => MagicRouter.navigateTo(const SearchScreen()),
                     ),
                     expandedHeight: context.height / 2,
                     flexibleSpace: FlexibleSpaceBar(
