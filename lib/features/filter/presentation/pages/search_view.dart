@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hotel_booking_algoriza/core/api/api_consumer.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
@@ -215,8 +216,11 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             BlocBuilder<SearchCubit, SearchStates>(
               builder: (context, state) {
+                final marker = BlocProvider.of<SearchCubit>(context).markers;
                 return state is SearchToMapstate
-                    ? const MapTest()
+                    ? MapTest(
+                        markers: marker,
+                      )
                     : state is SearchLoadingState
                         ? const Center(
                             child: CircularProgressIndicator(),

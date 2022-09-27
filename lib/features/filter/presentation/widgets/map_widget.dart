@@ -6,8 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hotel_booking_algoriza/config/location_services/location_services.dart';
 
 class MapTest extends StatefulWidget {
-  const MapTest({super.key});
-
+  const MapTest({super.key, required this.markers});
+  final Set<Marker> markers;
   @override
   State<MapTest> createState() => _MapTestState();
 }
@@ -19,7 +19,7 @@ class _MapTestState extends State<MapTest> {
     target: LatLng(position!.latitude, position!.longitude),
     bearing: 0.0,
     tilt: 0.0,
-    zoom: 17,
+    zoom: 8,
   );
   Future<void> getCurrentLocation() async {
     await LocationServices.getCurrentLocation();
@@ -27,6 +27,13 @@ class _MapTestState extends State<MapTest> {
       setState(() {});
     });
   }
+
+  // Set<Marker> markers = {
+  //   const Marker(
+  //     markerId: MarkerId('value'),
+  //     position: LatLng(9.669111, 80.014007),
+  //   )
+  // };
 
   @override
   void initState() {
@@ -39,6 +46,7 @@ class _MapTestState extends State<MapTest> {
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: GoogleMap(
+          markers: widget.markers,
           initialCameraPosition: _myCurrentCameraPosition,
           mapType: MapType.normal,
           myLocationEnabled: true,
