@@ -6,8 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hotel_booking_algoriza/config/location_services/location_services.dart';
 
 class MapTest extends StatefulWidget {
-  const MapTest({super.key});
-
+  const MapTest({super.key, required this.markers});
+  final Set<Marker> markers;
   @override
   State<MapTest> createState() => _MapTestState();
 }
@@ -19,7 +19,7 @@ class _MapTestState extends State<MapTest> {
     target: LatLng(position!.latitude, position!.longitude),
     bearing: 0.0,
     tilt: 0.0,
-    zoom: 17,
+    zoom: 8,
   );
   Future<void> getCurrentLocation() async {
     await LocationServices.getCurrentLocation();
@@ -28,6 +28,13 @@ class _MapTestState extends State<MapTest> {
     });
   }
 
+  // Set<Marker> markers = {
+  //   const Marker(
+  //     markerId: MarkerId('value'),
+  //     position: LatLng(9.669111, 80.014007),
+  //   )
+  // };
+
   @override
   void initState() {
     super.initState();
@@ -35,13 +42,19 @@ class _MapTestState extends State<MapTest> {
   }
 
   Widget buildMap() {
-    return GoogleMap(
-      initialCameraPosition: _myCurrentCameraPosition,
-      mapType: MapType.normal,
-      myLocationEnabled: true,
-      zoomControlsEnabled: false,
-      myLocationButtonEnabled: false,
-      onMapCreated: (controller) => _mapController.complete(controller),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: GoogleMap(
+          markers: widget.markers,
+          initialCameraPosition: _myCurrentCameraPosition,
+          mapType: MapType.normal,
+          myLocationEnabled: true,
+          zoomControlsEnabled: false,
+          myLocationButtonEnabled: false,
+          onMapCreated: (controller) => _mapController.complete(controller),
+        ),
+      ),
     );
   }
 
@@ -53,23 +66,17 @@ class _MapTestState extends State<MapTest> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          position != null
-              ? buildMap()
-              : const Center(
-                  child: CircularProgressIndicator(),
-                )
-        ],
-      ),
-      floatingActionButton: Container(
-        margin: const EdgeInsets.fromLTRB(0, 0, 8, 30),
-        child: FloatingActionButton(
-          child: const Icon(Icons.pin_drop_rounded),
-          onPressed: _goToMyCurrentLocation,
-        ),
-      ),
-    );
+    return position != null
+        ? buildMap()
+        : const Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }
+// floatingActionButton: Container(
+//         margin: const EdgeInsets.fromLTRB(0, 0, 8, 30),
+//         child: FloatingActionButton(
+//           child: const Icon(Icons.pin_drop_rounded),
+//           onPressed: _goToMyCurrentLocation,
+//         ),
+//       ),
