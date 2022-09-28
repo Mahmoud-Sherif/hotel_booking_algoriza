@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/core/api/api_consumer.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/cubit/search_cubit.dart';
+import 'package:hotel_booking_algoriza/features/filter/presentation/pages/filter_view.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_widget.dart';
 import 'package:hotel_booking_algoriza/injection_container.dart';
-
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/widgets/custom_input_field.dart';
 import '../widgets/search_result_widget.dart';
@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
       // sl<SearchCubit>()..getHotelBySearchValue(),
       child: Scaffold(
         appBar: AppBar(
-          title:  Text(
+          title: Text(
             AppLocalizations.of(context)!.translate('explore')!,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
@@ -50,7 +50,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     : IconButton(
                         onPressed: (() => BlocProvider.of<SearchCubit>(context)
                             .navigateToMap()),
-                        icon: const Icon(Icons.map_outlined,size: 25),
+                        icon: const Icon(Icons.map_outlined, size: 25),
                       );
               },
             ),
@@ -103,7 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
+                    children: [
                       Text(
                         AppLocalizations.of(context)!.translate('choose_date')!,
                         style: TextStyle(
@@ -133,9 +133,10 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
+                    children: [
                       Text(
-                        AppLocalizations.of(context)!.translate('number_of_room')!,
+                        AppLocalizations.of(context)!
+                            .translate('number_of_room')!,
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 21,
@@ -177,8 +178,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                 BlocBuilder<SearchCubit, SearchStates>(
                                     builder: (context, state) {
                                   return state is SearchLoadingState
-                                      ?  Text(
-                                       '0 ${AppLocalizations.of(context)!.translate('hotel_found')!}',
+                                      ? Text(
+                                          '0 ${AppLocalizations.of(context)!.translate('hotel_found')!}',
                                         )
                                       : Text(
                                           '${BlocProvider.of<SearchCubit>(context).searchedForHotels!.hotelModel.search.length} ${AppLocalizations.of(context)!.translate('hotel_found')!}',
@@ -190,18 +191,17 @@ class _SearchScreenState extends State<SearchScreen> {
                                 }),
                                 Row(
                                   children: [
-                                     Text(
-                                      AppLocalizations.of(context)!.translate('filter')!,
-                                      style: TextStyle(
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .translate('filter')!,
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
                                       ),
                                     ),
                                     IconButton(
-                                      onPressed: () {
-                                        // Navigator.push(context,
-                                        //     MaterialPageRoute(builder: (context)=>FiltterScreen()));
-                                      },
+                                      onPressed: () => MagicRouter.navigateTo(
+                                          FiltterScreen()),
                                       icon: const Icon(
                                         Icons.filter_list_outlined,
                                         color: ColorManager.primary,
