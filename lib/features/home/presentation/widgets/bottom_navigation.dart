@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/const/enums.dart';
 import '../cubit/navigation_cubit.dart';
 
@@ -12,24 +13,24 @@ class BottomNav extends StatelessWidget {
       builder: (context, state) {
         return BottomNavigationBar(
           currentIndex: state.index,
-          items: const [
+          items:  [
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.search_rounded,
               ),
-              label: 'Explore',
+              label: AppLocalizations.of(context)!.translate('explore')!,
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.favorite_outline,
               ),
-              label: 'Trips',
+              label: AppLocalizations.of(context)!.translate('trips')!,
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.person_outline_rounded,
               ),
-              label: 'Profile',
+              label: AppLocalizations.of(context)!.translate('profile')!,
             ),
           ],
           onTap: (index) {

@@ -13,7 +13,9 @@ class BestDealWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppPadding.p16, vertical: AppPadding.p16),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          MagicRouter.navigateTo(HotelDetailsScreen(hotelData: hotelData,));
+        },
         child: Container(
           decoration: const BoxDecoration(
             color: ColorManager.secondry,
@@ -73,14 +75,14 @@ class BestDealWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
-                                children: const [
+                                children:  [
                                   Icon(
                                     Icons.location_on_rounded,
                                     size: 16,
                                     color: Color(0xff4fbe9e),
                                   ),
                                   Text(
-                                    '2.0 km to city',
+                                    '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.grey,
@@ -117,8 +119,8 @@ class BestDealWidget extends StatelessWidget {
                                 ),
                                 onRatingUpdate: (double value) {},
                               ),
-                              const Text(
-                                "/per night",
+                               Text(
+                                "/${AppLocalizations.of(context)!.translate('per_night')!}",
                                 style: TextStyle(color: ColorManager.grey),
                               ),
                             ],

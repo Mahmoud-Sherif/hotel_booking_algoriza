@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hotel_booking_algoriza/features/trips/presentation/cubit/trips_cubit.dart';
 
+import '../../../../config/locale/app_localizations.dart';
+
 class Upcoming extends StatelessWidget {
   const Upcoming({Key? key}) : super(key: key);
 
@@ -153,8 +155,8 @@ class Upcoming extends StatelessWidget {
                                         size: 16,
                                         color: Color(0xff4fbe9e),
                                       ),
-                                      const Text(
-                                        '2.0km to city',
+                                       Text(
+                                        '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
                                         style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.grey,
@@ -162,8 +164,8 @@ class Upcoming extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const Text(
-                                    '/per night',
+                                   Text(
+                                    "/${AppLocalizations.of(context)!.translate('per_night')!}",
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.grey,
@@ -202,8 +204,8 @@ class Upcoming extends StatelessWidget {
                                     ),
                                     onRatingUpdate: (double value) {},
                                   ),
-                                  const Text(
-                                    '80 Reviews',
+                                   Text(
+                                    '80 ${AppLocalizations.of(context)!.translate('reviews')!}',
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.grey,

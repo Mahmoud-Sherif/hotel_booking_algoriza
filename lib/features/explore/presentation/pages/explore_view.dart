@@ -13,8 +13,10 @@ import 'package:hotel_booking_algoriza/features/explore/domain/usecases/get_hote
 import 'package:hotel_booking_algoriza/features/explore/presentation/cubit/explore_cubit.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../../config/locale/app_localizations.dart';
 import '../../../../injection_container.dart';
 import '../../../filter/presentation/pages/search_view.dart';
+import 'hotel_details_screen.dart';
 part '../widgets/indicator_view_hotel_btn.dart';
 part '../widgets/best_hotel_widgets.dart';
 part '../widgets/best_deal_card.dart';
@@ -53,7 +55,7 @@ class ExploreView extends StatelessWidget {
                     pinned: true,
                     // floating: true,
                     title: CustomInputField(
-                      hintText: "Where are you going ?",
+                      hintText: AppLocalizations.of(context)!.translate('where_are_you_going?')!,
                       prefixIcon: const Icon(
                         Icons.search,
                         color: ColorManager.lightGrey,
@@ -87,7 +89,7 @@ class ExploreView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Best Deals",
+                            AppLocalizations.of(context)!.translate('best_deals')!,
                             style: Theme.of(context).textTheme.displayMedium,
                           ),
                           TextButton.icon(
@@ -96,7 +98,7 @@ class ExploreView extends StatelessWidget {
                                   ColorManager.primary),
                             ),
                             onPressed: () {},
-                            icon: const Text('View all'),
+                            icon: Text(AppLocalizations.of(context)!.translate('view_all')!),
                             label: const Icon(Icons.arrow_forward),
                           )
                         ],
