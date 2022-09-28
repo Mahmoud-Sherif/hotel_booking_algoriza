@@ -4,6 +4,8 @@ import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
 import 'package:hotel_booking_algoriza/features/filter/data/models/search_hotels_model.dart';
 
+import '../../../../config/locale/app_localizations.dart';
+
 class SearchResultWidget extends StatelessWidget {
   final SearchHotelsModel? item;
   final int index;
@@ -22,7 +24,7 @@ class SearchResultWidget extends StatelessWidget {
           const SizedBox(height: 8),
           Container(
             width: context.width / 1.1,
-            height: context.height / 2.6,
+            height: context.height / 3.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
               // boxShadow: [
@@ -121,8 +123,8 @@ class SearchResultWidget extends StatelessWidget {
                             size: 16,
                             color: Color(0xff4fbe9e),
                           ),
-                          const Text(
-                            '2.0km to city',
+                           Text(
+                            '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey,
@@ -130,8 +132,8 @@ class SearchResultWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Text(
-                        '/per night',
+                       Text(
+                        "/${AppLocalizations.of(context)!.translate('per_night')!}",
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey,
@@ -163,8 +165,8 @@ class SearchResultWidget extends StatelessWidget {
                         ),
                         onRatingUpdate: (double value) {},
                       ),
-                      const Text(
-                        '80 Reviews',
+                       Text(
+                        '80 ${AppLocalizations.of(context)!.translate('reviews')!} ',
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey,

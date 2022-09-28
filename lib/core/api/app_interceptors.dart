@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import '../../features/auth/data/datasources/local/autl_local_data_source.dart';
+import '../../injection_container.dart';
 import '../utils/strings_manager.dart';
 
 class AppIntercepters extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('REQUEST[${options.method}] => PATH: ${options.path}');
-    options.headers = {'token': AppStrings.token};
+    options.headers = {'token': sl<AuthLocalDataSource>().token};
     super.onRequest(options, handler);
   }
 

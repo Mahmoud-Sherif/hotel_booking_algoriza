@@ -7,6 +7,8 @@ import 'package:hotel_booking_algoriza/features/trips/presentation/widgets/finis
 import 'package:hotel_booking_algoriza/features/trips/presentation/widgets/upcoming.dart';
 import 'package:hotel_booking_algoriza/injection_container.dart';
 
+import '../../../../config/locale/app_localizations.dart';
+
 class TripsPage extends StatelessWidget {
   const TripsPage({Key? key}) : super(key: key);
 
@@ -20,8 +22,8 @@ class TripsPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
         appBar: AppBar(
-          title: const Text(
-            'My Trip',
+          title:  Text(
+            AppLocalizations.of(context)!.translate('my_trip')!,
             style: TextStyle(
               color: Colors.black,
               fontSize: 24,
@@ -56,15 +58,15 @@ class TripsPage extends StatelessWidget {
                       ],
                       color: Colors.white,
                     ),
-                    child: const TabBar(
+                    child:  TabBar(
                       labelColor: Color(0xff4fbe9e),
                       unselectedLabelColor: Colors.grey,
                       indicatorWeight: 0.01,
                       indicatorColor: Colors.transparent,
                       tabs: [
-                        Tab(text: 'Upcoming'),
-                        Tab(text: 'Finished'),
-                        Tab(text: 'Favorites'),
+                        Tab(text: AppLocalizations.of(context)!.translate('upcoming')!),
+                        Tab(text: AppLocalizations.of(context)!.translate('finished')!),
+                        Tab(text: AppLocalizations.of(context)!.translate('cancelled')!),
                       ],
                     ),
                   ),
