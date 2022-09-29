@@ -10,22 +10,23 @@ import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_
 import 'package:hotel_booking_algoriza/injection_container.dart';
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/widgets/custom_input_field.dart';
+import '../../data/models/search_hotels_model.dart';
 import '../widgets/search_result_widget.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
-
+class FilterResultView extends StatefulWidget {
+  const FilterResultView({Key? key, required this.searchedForHotels})
+      : super(key: key);
+  final SearchHotelsModel searchedForHotels;
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<FilterResultView> createState() => _FilterResultViewState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _FilterResultViewState extends State<FilterResultView> {
   final TextEditingController inputController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SearchCubit>(
-      create: (context) =>
-          SearchCubit(apiConsumer: sl<ApiConsumer>())..getHotelBySearchValue(),
+      create: (context) => SearchCubit(apiConsumer: sl<ApiConsumer>()),
       // sl<SearchCubit>()..getHotelBySearchValue(),
       child: Scaffold(
         appBar: AppBar(
@@ -182,7 +183,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                           '0 ${AppLocalizations.of(context)!.translate('hotel_found')!}',
                                         )
                                       : Text(
-                                          '${BlocProvider.of<SearchCubit>(context).searchedForHotels!.hotelModel.search.length} ${AppLocalizations.of(context)!.translate('hotel_found')!}',
+                                          '${widget.searchedForHotels.hotelModel.search.length} ${AppLocalizations.of(context)!.translate('hotel_found')!}',
                                           style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 15,
@@ -202,8 +203,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     IconButton(
                                       onPressed: () =>
                                           MagicRouter.navigateAndPopAll(
-                                        FiltterScreen(),
-                                      ),
+                                              FiltterScreen()),
                                       icon: const Icon(
                                         Icons.filter_list_outlined,
                                         color: ColorManager.primary,
@@ -231,15 +231,11 @@ class _SearchScreenState extends State<SearchScreen> {
                           )
                         : Expanded(
                             child: ListView.builder(
-                              itemCount: BlocProvider.of<SearchCubit>(context)
-                                  .searchedForHotels!
-                                  .hotelModel
-                                  .search
-                                  .length,
+                              itemCount: widget
+                                  .searchedForHotels.hotelModel.search.length,
                               itemBuilder: (context, index) =>
                                   SearchResultWidget(
-                                item: BlocProvider.of<SearchCubit>(context)
-                                    .searchedForHotels,
+                                item: widget.searchedForHotels,
                                 index: index,
                               ),
                             ),
