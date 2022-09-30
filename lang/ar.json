@@ -51,5 +51,21 @@
   "reply": "رد",
   "book_now": "احجز الآن",
   "people": "الناس",
-  "date": "28, سبتمبر - 3, اكتوبر"
+  "date": "28, سبتمبر - 3, اكتوبر",
+  "price_for_one_night": "السعر (لليلة واحدة)",
+  "popular_filter": "مرشح شعبي",
+  "kitchen": "مطبخ",
+  "a_c": "A/C",
+  "parking": "موقف سيارات",
+  "sea_view": "اطلالة البحر",
+  "wifi": "واي فاي",
+  "garden": "حديقة",
+  "distance_from_city_center": "المسافة من وسط المدينة",
+  "type_of_accommodation": "نوع الإقامة",
+  "all": "الجميع",
+  "apartment": "شقة",
+  "home": "منزل",
+  "villa": "فيلا",
+  "hotel": "الفندق",
+  "resort": "منتجع"
 }

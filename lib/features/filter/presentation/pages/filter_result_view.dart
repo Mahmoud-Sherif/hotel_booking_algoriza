@@ -10,6 +10,8 @@ import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_
 import 'package:hotel_booking_algoriza/injection_container.dart';
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/widgets/custom_input_field.dart';
+import '../../../home/presentation/pages/home_view.dart';
+import '../../../profile/presentation/widgets/divider_widget.dart';
 import '../../data/models/search_hotels_model.dart';
 import '../widgets/search_result_widget.dart';
 
@@ -36,6 +38,7 @@ class _FilterResultViewState extends State<FilterResultView> {
           ),
           centerTitle: true,
           actions: [
+
             IconButton(
               icon: const Icon(Icons.favorite_border, size: 25),
               onPressed: () {},
@@ -55,7 +58,13 @@ class _FilterResultViewState extends State<FilterResultView> {
                       );
               },
             ),
+
           ],
+          leading:            IconButton(
+            icon: const Icon(Icons.arrow_back, size: 25),
+            onPressed: () {MagicRouter.navigateAndReplacement(HomeView());},
+          ) ,
+
         ),
         body: Column(
           children: [
@@ -84,7 +93,7 @@ class _FilterResultViewState extends State<FilterResultView> {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(12),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: ColorManager.primary,
@@ -98,7 +107,7 @@ class _FilterResultViewState extends State<FilterResultView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -108,28 +117,28 @@ class _FilterResultViewState extends State<FilterResultView> {
                       Text(
                         AppLocalizations.of(context)!.translate('choose_date')!,
                         style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 21,
-                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade500,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
                         height: 5,
                       ),
                       Text(
-                        //'23, sep - 28, oct',
+                        //'23, Sep - 28, Oct',
                         AppLocalizations.of(context)!.translate('date')!,
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(width: 10),
                   Container(
-                    width: 2,
-                    height: 70,
+                    width: 1,
+                    height: 40,
                     color: Colors.grey,
                   ),
                   Column(
@@ -138,20 +147,21 @@ class _FilterResultViewState extends State<FilterResultView> {
                       Text(
                         AppLocalizations.of(context)!
                             .translate('number_of_room')!,
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 21,
-                          fontWeight: FontWeight.w400,
+                        style:  TextStyle(
+                          color: Colors.grey.shade500,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
                         '1 ${AppLocalizations.of(context)!.translate('room')!} 2 ${AppLocalizations.of(context)!.translate('people')!}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 17,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -159,18 +169,16 @@ class _FilterResultViewState extends State<FilterResultView> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             BlocBuilder<SearchCubit, SearchStates>(
               builder: (context, state) {
                 return state is SearchToMapstate
                     ? Container()
                     : Column(
                         children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(vertical: 20),
-                            color: Colors.grey,
-                            width: double.infinity,
-                            height: 1,
-                          ),
+                          dividerWidget(0, 0, 0),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Row(
@@ -181,12 +189,17 @@ class _FilterResultViewState extends State<FilterResultView> {
                                   return state is SearchLoadingState
                                       ? Text(
                                           '0 ${AppLocalizations.of(context)!.translate('hotel_found')!}',
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500
+                                    ),
                                         )
                                       : Text(
                                           '${widget.searchedForHotels.hotelModel.search.length} ${AppLocalizations.of(context)!.translate('hotel_found')!}',
                                           style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
                                           ),
                                         );
                                 }),
@@ -196,8 +209,9 @@ class _FilterResultViewState extends State<FilterResultView> {
                                       AppLocalizations.of(context)!
                                           .translate('filter')!,
                                       style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600
                                       ),
                                     ),
                                     IconButton(
@@ -214,6 +228,8 @@ class _FilterResultViewState extends State<FilterResultView> {
                               ],
                             ),
                           ),
+                          //SizedBox(height: 1,)
+
                         ],
                       );
               },

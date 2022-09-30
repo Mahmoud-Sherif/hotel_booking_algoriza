@@ -51,7 +51,23 @@
   "reply": "Reply",
   "book_now": "Book now",
   "people": "People",
-  "date": "23, sep - 28, oct"
+  "date": "23, Sep - 28, Oct",
+  "price_for_one_night": "Price (for 1 night)",
+  "popular_filter": "Popular Filter",
+  "kitchen": "Kitchen",
+  "a_c": "A/C",
+  "parking": "Parking",
+  "sea_view": "Sea view",
+  "wifi": "Wifi",
+  "garden": "Garden",
+  "distance_from_city_center": "Distance From City Center",
+  "type_of_accommodation": "Type of Accommodation",
+  "all": "All",
+  "apartment": "Apartment",
+  "home": "Home",
+  "villa": "Villa",
+  "hotel": "Hotel",
+  "resort": "Resort"
 
 
 }

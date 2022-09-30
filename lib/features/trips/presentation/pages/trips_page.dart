@@ -8,6 +8,7 @@ import 'package:hotel_booking_algoriza/features/trips/presentation/widgets/upcom
 import 'package:hotel_booking_algoriza/injection_container.dart';
 
 import '../../../../config/locale/app_localizations.dart';
+import '../../../../core/utils/color_manager.dart';
 
 class TripsPage extends StatelessWidget {
   const TripsPage({Key? key}) : super(key: key);
@@ -20,12 +21,13 @@ class TripsPage extends StatelessWidget {
         ..getAllHotelsByTypeCompleted()
         ..getAllHotelsByTypeCancelled(),
       child: Scaffold(
-        backgroundColor: Colors.grey.shade50,
+        backgroundColor: Color(0xFF1a1a1a),
+
         appBar: AppBar(
           title:  Text(
             AppLocalizations.of(context)!.translate('my_trip')!,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
@@ -56,7 +58,7 @@ class TripsPage extends StatelessWidget {
                           offset: const Offset(0, 4),
                         ),
                       ],
-                      color: Colors.white,
+                      color: ColorManager.secondry,
                     ),
                     child:  TabBar(
                       labelColor: Color(0xff4fbe9e),
@@ -74,7 +76,7 @@ class TripsPage extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: SizedBox(
-                    height: 600,
+                    height: 665,
                     child: TabBarView(
                       children: [
                         Upcoming(),
