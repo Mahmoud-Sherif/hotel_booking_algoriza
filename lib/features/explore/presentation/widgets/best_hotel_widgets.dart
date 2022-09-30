@@ -28,22 +28,18 @@ class BestHotelsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 100),
+              const SizedBox(height: 220),
               Text(
                 hotelData.name,
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge!
-                    .copyWith(fontSize: 20),
+                style: Theme.of(context).textTheme.displayLarge,
               ),
               const SizedBox(height: 5),
               Text(
                 hotelData.description,
-                maxLines: 3,
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
-                    .copyWith(fontWeight: FontWeight.w400, fontSize: 16),
+                    .copyWith(fontWeight: FontWeight.w400, fontSize: 18),
               ),
               const SizedBox(height: 10),
             ],
