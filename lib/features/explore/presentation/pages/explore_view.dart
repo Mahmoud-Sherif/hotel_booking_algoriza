@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:hotel_booking_algoriza/config/location_services/location_services.dart';
 import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/core/api/end_points.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
@@ -55,7 +57,8 @@ class ExploreView extends StatelessWidget {
                     pinned: true,
                     // floating: true,
                     title: CustomInputField(
-                      hintText: AppLocalizations.of(context)!.translate('where_are_you_going?')!,
+                      hintText: AppLocalizations.of(context)!
+                          .translate('where_are_you_going?')!,
                       prefixIcon: const Icon(
                         Icons.search,
                         color: ColorManager.lightGrey,
@@ -89,7 +92,8 @@ class ExploreView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!.translate('best_deals')!,
+                            AppLocalizations.of(context)!
+                                .translate('best_deals')!,
                             style: Theme.of(context).textTheme.displayMedium,
                           ),
                           TextButton.icon(
@@ -98,7 +102,8 @@ class ExploreView extends StatelessWidget {
                                   ColorManager.primary),
                             ),
                             onPressed: () {},
-                            icon: Text(AppLocalizations.of(context)!.translate('view_all')!),
+                            icon: Text(AppLocalizations.of(context)!
+                                .translate('view_all')!),
                             label: const Icon(Icons.arrow_forward),
                           )
                         ],

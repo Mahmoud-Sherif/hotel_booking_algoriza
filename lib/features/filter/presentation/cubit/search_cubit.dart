@@ -25,8 +25,10 @@ class SearchCubit extends Cubit<SearchStates> {
       'page': '1',
     });
     searchedForHotels = SearchHotelsModel.fromJson(response);
-    getLatLng();
+    await getLatLng();
     debugPrint(searchedForHotels!.hotelModel.search.length.toString());
+    debugPrint(markers.length.toString());
+
     emit(SearchSuccessState());
   }
 
@@ -65,16 +67,13 @@ class SearchCubit extends Cubit<SearchStates> {
 
   Set<Marker> markers = {};
   getLatLng() {
-    if (searchedForHotels != null) {
-      for (var hotel in searchedForHotels!.hotelModel.search) {
-        return markers.add(
-          Marker(
-              markerId: MarkerId(hotel.name),
-              position:
-                  LatLng(double.parse(hotel.lat), double.parse(hotel.long)),
-              infoWindow: InfoWindow(title: hotel.name)),
-        );
-      }
+    for (var hotel in searchedForHotels!.hotelModel.search) {
+      markers.add(
+        Marker(
+            markerId: MarkerId(hotel.name),
+            position: LatLng(double.parse(hotel.lat), double.parse(hotel.long)),
+            infoWindow: InfoWindow(title: hotel.name)),
+      );
     }
   }
 }
