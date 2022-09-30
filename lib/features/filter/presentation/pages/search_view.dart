@@ -7,6 +7,7 @@ import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/cubit/search_cubit.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/pages/filter_view.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_widget.dart';
+import 'package:hotel_booking_algoriza/features/profile/presentation/widgets/divider_widget.dart';
 import 'package:hotel_booking_algoriza/injection_container.dart';
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/widgets/custom_input_field.dart';
@@ -83,7 +84,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(12),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: ColorManager.primary,
@@ -97,7 +98,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -107,28 +108,28 @@ class _SearchScreenState extends State<SearchScreen> {
                       Text(
                         AppLocalizations.of(context)!.translate('choose_date')!,
                         style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 21,
-                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade500,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
                         height: 5,
                       ),
                       Text(
-                        //'23, sep - 28, oct',
+                        //'23, Sep - 28, Oct',
                         AppLocalizations.of(context)!.translate('date')!,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 17,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(width: 10),
                   Container(
-                    width: 2,
-                    height: 70,
+                    width: 1,
+                    height: 40,
                     color: Colors.grey,
                   ),
                   Column(
@@ -137,20 +138,21 @@ class _SearchScreenState extends State<SearchScreen> {
                       Text(
                         AppLocalizations.of(context)!
                             .translate('number_of_room')!,
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 21,
-                          fontWeight: FontWeight.w400,
+                        style:  TextStyle(
+                          color: Colors.grey.shade500,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
                         '1 ${AppLocalizations.of(context)!.translate('room')!} 2 ${AppLocalizations.of(context)!.translate('people')!}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 17,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -158,18 +160,17 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+
             BlocBuilder<SearchCubit, SearchStates>(
               builder: (context, state) {
                 return state is SearchToMapstate
                     ? Container()
                     : Column(
                         children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(vertical: 20),
-                            color: Colors.grey,
-                            width: double.infinity,
-                            height: 1,
-                          ),
+                          dividerWidget(0, 0, 0),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Row(
@@ -180,12 +181,18 @@ class _SearchScreenState extends State<SearchScreen> {
                                   return state is SearchLoadingState
                                       ? Text(
                                           '0 ${AppLocalizations.of(context)!.translate('hotel_found')!}',
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500
+                                    ),
                                         )
                                       : Text(
-                                          '${BlocProvider.of<SearchCubit>(context).searchedForHotels!.hotelModel.search.length} ${AppLocalizations.of(context)!.translate('hotel_found')!}',
+                                          '${BlocProvider.of<SearchCubit>(context).searchedForHotels!.hotelModel.search.length}  ${AppLocalizations.of(context)!.translate('hotel_found')!}',
                                           style: const TextStyle(
                                             color: Colors.white,
-                                            fontSize: 15,
+                                            fontSize: 14,
+                                              fontWeight: FontWeight.w600
+
                                           ),
                                         );
                                 }),
@@ -196,13 +203,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                           .translate('filter')!,
                                       style: const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: 14,
+                                          fontWeight: FontWeight.w600
                                       ),
                                     ),
                                     IconButton(
                                       onPressed: () =>
                                           MagicRouter.navigateAndPopAll(
-                                        FiltterScreen(),
+                                        const FiltterScreen(),
                                       ),
                                       icon: const Icon(
                                         Icons.filter_list_outlined,
@@ -214,6 +222,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ],
                             ),
                           ),
+                          //SizedBox(height: 5,)
                         ],
                       );
               },

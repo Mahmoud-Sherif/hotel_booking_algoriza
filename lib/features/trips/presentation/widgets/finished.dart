@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking_algoriza/features/trips/presentation/cubit/trips_cubit.dart';
 
 import '../../../../config/locale/app_localizations.dart';
@@ -26,148 +27,160 @@ class Finished extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) => Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 22, vertical: 22),
                   child: Column(
                     children: [
                       SizedBox(
                         width: double.infinity,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 130,
-                              height: 140,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(16)),
-                                image: DecorationImage(
-                                  image: BlocProvider.of<TripsCubit>(context)
-                                          .completedHotels!
-                                          .hotelModel
-                                          .booking[index]
-                                          .hotel
-                                          .hotelImages
-                                          .isNotEmpty
-                                      ? NetworkImage(
-                                          'http://api.mahmoudtaha.com/images/${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.hotelImages[0].image}')
-                                      : const NetworkImage(
-                                          'https://hiueduonline.com/wp-content/plugins/tutor/assets/images/placeholder.jpg'),
-                                  fit: BoxFit.cover,
+                        //height: context.height / 4,
+
+                        child: Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 130,
+                                height: 160,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(16)),
+                                  image: DecorationImage(
+                                    image: BlocProvider.of<TripsCubit>(context)
+                                            .completedHotels!
+                                            .hotelModel
+                                            .booking[index]
+                                            .hotel
+                                            .hotelImages
+                                            .isNotEmpty
+                                        ? NetworkImage(
+                                            'http://api.mahmoudtaha.com/images/${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.hotelImages[0].image}')
+                                        : const NetworkImage(
+                                            'https://hiueduonline.com/wp-content/plugins/tutor/assets/images/placeholder.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: TextSpan(
-                                      style:
-                                          const TextStyle(color: Colors.black),
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              '${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.name} \n',
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              '${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.address} \n',
-                                          style: const TextStyle(
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: '01 Sep - 05 Sep \n',
-                                          style: TextStyle(
-                                            color: Colors.grey.shade900,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: '1 Room 2 People',
-                                          style: TextStyle(
-                                            color: Colors.grey.shade900,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children:  [
-                                      Icon(
-                                        Icons.location_on_rounded,
-                                        size: 16,
-                                        color: Color(0xff4fbe9e),
-                                      ),
-                                      Text(
-                                        '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      RatingBar.builder(
-                                        minRating: 1,
-                                        maxRating: 5,
-                                        initialRating: double.parse(
-                                            BlocProvider.of<TripsCubit>(context)
-                                                .completedHotels!
-                                                .hotelModel
-                                                .booking[index]
-                                                .hotel
-                                                .rate),
-                                        allowHalfRating: true,
-                                        direction: Axis.horizontal,
-                                        itemCount: 5,
-                                        itemSize: 16,
-                                        itemPadding: const EdgeInsets.symmetric(
-                                          horizontal: 2.0,
+                                      RichText(
+                                        text: TextSpan(
+                                          style:
+                                              const TextStyle(color: Colors.black),
+                                          children: [
+                                            TextSpan(
+                                              text:
+                                                  '${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.name} \n',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium!
+                                                  .copyWith(fontSize: 17,),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  '${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.address} \n',
+                                              style: const TextStyle(
+                                                  color: Color(0xFF666666),
+                                                overflow: TextOverflow.ellipsis,
+                                                fontWeight:FontWeight.w500
+
+                                              ),
+                                            ),
+                                            const TextSpan(
+                                              text: '01 Sep - 05 Sep \n',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                  fontWeight:FontWeight.w500
+                                              ),
+                                            ),
+                                            const TextSpan(
+                                              text: '1 Room 2 People',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                  fontWeight:FontWeight.w500
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        itemBuilder: (context, _) => const Icon(
-                                          Icons.star,
-                                          color: Color(0xff4fbe9e),
+                                      ),
+                                      Row(
+                                        children:  [
+                                          Icon(
+                                            Icons.location_on_rounded,
+                                            size: 16,
+                                            color: Color(0xff4fbe9e),
+                                          ),
+                                          Text(
+                                            '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                                color: Color(0xFF666666),
+                                                fontWeight:FontWeight.w500
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          RatingBar.builder(
+                                            minRating: 1,
+                                            maxRating: 5,
+                                            initialRating: double.parse(
+                                                BlocProvider.of<TripsCubit>(context)
+                                                    .completedHotels!
+                                                    .hotelModel
+                                                    .booking[index]
+                                                    .hotel
+                                                    .rate),
+                                            allowHalfRating: true,
+                                            direction: Axis.horizontal,
+                                            itemCount: 5,
+                                            itemSize: 16,
+                                            itemPadding: const EdgeInsets.symmetric(
+                                              horizontal: 2.0,
+                                            ),
+                                            itemBuilder: (context, _) => const Icon(
+                                              Icons.star,
+                                              color: Color(0xff4fbe9e),
+                                            ),
+                                            onRatingUpdate: (double value) {},
+                                          ),
+                                        ],
+                                      ),
+                                      RichText(
+                                        text: TextSpan(
+                                          style:
+                                              const TextStyle(color: Colors.black),
+                                          children: [
+                                            TextSpan(
+                                              text:
+                                                  '\$ ${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.price}',
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 19,
+                                                  color: Colors.white),
+                                            ),
+                                             TextSpan(
+                                              text: "  /${AppLocalizations.of(context)!.translate('per_night')!}",
+                                              style: TextStyle(
+                                                fontWeight:FontWeight.w600,
+                                                color: Color(0xFF666666),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        onRatingUpdate: (double value) {},
                                       ),
                                     ],
                                   ),
-                                  RichText(
-                                    text: TextSpan(
-                                      style:
-                                          const TextStyle(color: Colors.black),
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              '\$ ${BlocProvider.of<TripsCubit>(context).completedHotels!.hotelModel.booking[index].hotel.price}',
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16,
-                                              color: Colors.black),
-                                        ),
-                                         TextSpan(
-                                          text: "/${AppLocalizations.of(context)!.translate('per_night')!}",
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],

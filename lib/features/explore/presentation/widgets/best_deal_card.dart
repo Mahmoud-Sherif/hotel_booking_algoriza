@@ -54,19 +54,21 @@ class BestDealWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          style: const TextStyle(color: Colors.black),
-                          children: [
-                            TextSpan(
-                              text: '${hotelData.name} \n',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            TextSpan(
-                              text: '${hotelData.address} \n',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                          ],
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(color: Colors.black),
+                            children: [
+                              TextSpan(
+                                text: '${hotelData.name} \n',
+                                style: Theme.of(context).textTheme.displayMedium,
+                              ),
+                              TextSpan(
+                                text: '${hotelData.address} \n',
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Column(
@@ -85,7 +87,7 @@ class BestDealWidget extends StatelessWidget {
                                     '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.grey,
+                                      color: Color(0xFF666666),
                                     ),
                                   ),
                                 ],

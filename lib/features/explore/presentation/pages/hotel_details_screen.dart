@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
+import 'package:hotel_booking_algoriza/core/api/end_points.dart';
 import 'package:hotel_booking_algoriza/features/explore/data/models/hotels_model.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_widget.dart';
 import 'package:readmore/readmore.dart';
@@ -10,6 +11,8 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/widgets/main_button.dart';
 import '../../../../injection_container.dart';
+import '../../../booking/data/models/booking_hotels_model.dart';
+import '../../../booking/presentation/cubit/booking_cubit.dart';
 import '../../../filter/presentation/cubit/search_cubit.dart';
 import '../widgets/build_hotel_images_widget.dart';
 import '../widgets/build_reviews_list_widget.dart';
@@ -22,6 +25,7 @@ import 'explore_view.dart';
 class HotelDetailsScreen extends StatelessWidget {
   HotelDetailsScreen({Key? key, required this.hotelData}) : super(key: key);
   HotelModel hotelData;
+  BookingHotelsModel? createBooking;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +38,13 @@ class HotelDetailsScreen extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: 220,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   color: Colors.transparent,
                   image: DecorationImage(
                     image: NetworkImage(
-                      //EndPoints.imageBaseUrl + hotelData.hotelImages.image
-                      "https://www.swissotel.ae/assets/0/92/"
-                      "3686/3768/3770/6442451433/ae87da19-9f23-450a-8927-6f4c700aa104.jpg",
+                      EndPoints.imageBaseUrl + hotelData.hotelImages[0].image,
+                      //"https://www.swissotel.ae/assets/0/92/"
+                      //"3686/3768/3770/6442451433/ae87da19-9f23-450a-8927-6f4c700aa104.jpg",
                     ),
                     //AssetImage("asset/hotel2.jpg"),
                     fit: BoxFit.fill,
@@ -72,28 +76,31 @@ class HotelDetailsScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              hotelData.name,
-                              //"Grand Royal Hotel",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 20,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                hotelData.name,
+                                //"Grand Royal Hotel",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 20,
+                                ),
                               ),
-                            ),
-                            Text(
-                              //"Wembley, London 2.0km to city ",
-                              hotelData.address,
-                              style: TextStyle(
-                                color: Color(0xFF878787),
-                                fontWeight: FontWeight.w300,
-                                fontSize: 14,
+                              Text(
+                                //"Wembley, London 2.0km to city ",
+                                maxLines: 2,
+                                hotelData.address,
+                                style: TextStyle(
+                                  color: Color(0xFF878787),
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 14,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -174,13 +181,13 @@ class HotelDetailsScreen extends StatelessWidget {
                             color: Color(0xFF2c2c2c),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Row(
+                          child: Row (
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  right: 15.0,
+                                  right: 20.0,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,7 +205,7 @@ class HotelDetailsScreen extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 5,
+                                      height: 10,
                                     ),
                                     Text(
                                       AppLocalizations.of(context)!
@@ -208,6 +215,9 @@ class HotelDetailsScreen extends StatelessWidget {
                                         fontWeight: FontWeight.w300,
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     Text(
                                       AppLocalizations.of(context)!
                                           .translate('services')!,
@@ -216,6 +226,9 @@ class HotelDetailsScreen extends StatelessWidget {
                                         fontWeight: FontWeight.w300,
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     Text(
                                       AppLocalizations.of(context)!
                                           .translate('location')!,
@@ -223,6 +236,9 @@ class HotelDetailsScreen extends StatelessWidget {
                                         color: Color(0xFFd5d5d5),
                                         fontWeight: FontWeight.w300,
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
                                     Text(
                                       AppLocalizations.of(context)!
@@ -251,28 +267,28 @@ class HotelDetailsScreen extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 16,
+                                    height: 19,
                                   ),
                                   RatingContainerWidget(
                                     width: MediaQuery.of(context).size.width *
                                         0.54,
                                   ),
                                   SizedBox(
-                                    height: 3,
+                                    height: 13,
                                   ),
                                   RatingContainerWidget(
                                     width: MediaQuery.of(context).size.width *
                                         0.50,
                                   ),
                                   SizedBox(
-                                    height: 3,
+                                    height: 13,
                                   ),
                                   RatingContainerWidget(
                                     width: MediaQuery.of(context).size.width *
                                         0.44,
                                   ),
                                   SizedBox(
-                                    height: 3,
+                                    height: 13,
                                   ),
                                   RatingContainerWidget(
                                     width: MediaQuery.of(context).size.width *
@@ -283,6 +299,7 @@ class HotelDetailsScreen extends StatelessWidget {
                             ],
                           ),
                         ),
+
                         SizedBox(
                           height: 20,
                         ),
@@ -308,9 +325,11 @@ class HotelDetailsScreen extends StatelessWidget {
                           height: 20,
                         ),
                         MainButton(
+                          onPressed: () {},
+                          backgroundColor: Color(0xFF4fbe9e),
                           text: AppLocalizations.of(context)!
                               .translate('book_now')!,
-                        )
+                        ),
                       ],
                     ),
                   ),
