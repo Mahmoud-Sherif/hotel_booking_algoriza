@@ -14,7 +14,9 @@ class BestDealWidget extends StatelessWidget {
           horizontal: AppPadding.p16, vertical: AppPadding.p16),
       child: InkWell(
         onTap: () {
-          MagicRouter.navigateTo(HotelDetailsScreen(hotelData: hotelData,));
+          MagicRouter.navigateTo(HotelDetailsScreen(
+            hotelData: hotelData,
+          ));
         },
         child: Container(
           decoration: const BoxDecoration(
@@ -27,7 +29,7 @@ class BestDealWidget extends StatelessWidget {
             children: [
               Container(
                 width: context.width / 3,
-                height: context.height / 6,
+                height: context.height / 5.5,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
@@ -49,27 +51,22 @@ class BestDealWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(AppPadding.p12),
                 child: SizedBox(
                   width: context.width / 2,
-                  height: context.height / 7.5,
+                  height: context.height / 6.6,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: RichText(
-                          text: TextSpan(
-                            style: const TextStyle(color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: '${hotelData.name} \n',
-                                style: Theme.of(context).textTheme.displayMedium,
-                              ),
-                              TextSpan(
-                                text: '${hotelData.address} \n',
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
-                            ],
-                          ),
-                        ),
+                      Text(
+                        hotelData.name,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontSize: 14),
+                      ),
+                      Text(
+                        hotelData.address,
+                        style: Theme.of(context).textTheme.displaySmall,
+                        maxLines: 2,
                       ),
                       Column(
                         children: [
@@ -77,18 +74,26 @@ class BestDealWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
-                                children:  [
-                                  Icon(
+                                children: [
+                                  const Icon(
                                     Icons.location_on_rounded,
                                     size: 16,
-                                    color: Color(0xff4fbe9e),
+                                    color: ColorManager.primary,
                                   ),
-                                  Text(
-                                    '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Color(0xFF666666),
-                                    ),
+                                  BlocBuilder<ExploreCubit, ExploreState>(
+                                    builder: (context, state) {
+                                      Position myPosition =
+                                          BlocProvider.of<ExploreCubit>(context)
+                                              .myPosition;
+                                      return Text(
+                                        '${Geolocator.distanceBetween(myPosition.latitude, myPosition.longitude, double.parse(hotelData.lat), double.parse(hotelData.long)).toStringAsFixed(0)} km',
+                                        // '2.0 ${AppLocalizations.of(context)!.translate('km_to_city')!}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey,
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
@@ -121,7 +126,7 @@ class BestDealWidget extends StatelessWidget {
                                 ),
                                 onRatingUpdate: (double value) {},
                               ),
-                               Text(
+                              Text(
                                 "/${AppLocalizations.of(context)!.translate('per_night')!}",
                                 style: TextStyle(color: ColorManager.grey),
                               ),
@@ -139,7 +144,7 @@ class BestDealWidget extends StatelessWidget {
       ),
     );
   }
-} 
+}
 /*
 
              
