@@ -79,7 +79,8 @@ class ExploreView extends StatelessWidget {
                             },
                           ),
                           IndicatorAndViewHotelBTN(
-                              boardController: boardController),
+                            boardController: boardController,
+                          ),
                         ],
                       ),
                     ),

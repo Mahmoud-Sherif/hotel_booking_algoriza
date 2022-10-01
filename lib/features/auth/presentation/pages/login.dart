@@ -40,80 +40,83 @@ class LoginView extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Login',
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    LoginOrSignupWith(
-                      tittle: 'Facebook',
-                      icon: Icons.facebook,
-                      onPressed: () {},
-                      backgroundColor: Colors.blue[800],
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Login',
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      LoginOrSignupWith(
+                        tittle: 'Facebook',
+                        icon: Icons.facebook,
+                        onPressed: () {},
+                        backgroundColor: Colors.blue[800],
+                      ),
+                      LoginOrSignupWith(
+                        tittle: 'Twitter',
+                        icon: Icons.facebook,
+                        onPressed: () {},
+                        backgroundColor: Colors.blue[500],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Center(
+                    child: Text(
+                      'or log in with email',
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
-                    LoginOrSignupWith(
-                      tittle: 'Twitter',
-                      icon: Icons.facebook,
-                      onPressed: () {},
-                      backgroundColor: Colors.blue[500],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Center(
-                  child: Text(
-                    'or log in with email',
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'Your email',
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  'Your email',
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                CustomInputField(
-                  hintText: 'enter email',
-                  inputController: _conEmail,
-                  // formKey: _keyForm,
-                ),
-                Text(
-                  'Password',
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                CustomInputField(
-                  hintText: 'enter password',
-                  inputController: _conPassword,
-                  obscureText: true,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Text('Forgot your Password ?')),
-                ),
-                BlocBuilder<AuthCubit, AuthState>(
-                  builder: (context, state) {
-                    return MainButton(
-                      text: 'Login',
-                      onPressed: () async {
-                        await BlocProvider.of<AuthCubit>(context).login(
-                          LoginParams(
-                            email: _conEmail.text,
-                            password: _conPassword.text,
-                          ),
-                        );
-                        MagicRouter.navigateAndPopAll(HomeView());
-                      },
-                    );
-                  },
-                )
-              ],
+                  CustomInputField(
+                    hintText: 'enter email',
+                    inputController: _conEmail,
+                    // formKey: _keyForm,
+                  ),
+                  Text(
+                    'Password',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  CustomInputField(
+                    hintText: 'enter password',
+                    inputController: _conPassword,
+                    obscureText: true,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                        onPressed: () {},
+                        child: const Text('Forgot your Password ?')),
+                  ),
+                  BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return MainButton(
+                        text: 'Login',
+                        onPressed: () async {
+                          await BlocProvider.of<AuthCubit>(context).login(
+                            LoginParams(
+                              email: _conEmail.text,
+                              password: _conPassword.text,
+                            ),
+                          );
+                          MagicRouter.navigateAndPopAll(HomeView());
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),
