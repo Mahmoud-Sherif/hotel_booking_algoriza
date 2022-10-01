@@ -12,15 +12,12 @@ class BestHotelsWidget extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        hotelData.hotelImages.isEmpty
-            ? Image.asset(
-                'assets/images/capetown.jpg',
-                fit: BoxFit.fitHeight,
-              )
-            : Image.network(
-                EndPoints.imageBaseUrl + hotelData.hotelImages[0].image,
-                fit: BoxFit.cover,
-              ),
+        FadeInImage.assetNetwork(
+          placeholder: 'assets/images/place_holder.png',
+          image: EndPoints.imageBaseUrl + hotelData.hotelImages[0].image,
+          fit: BoxFit.cover,
+          placeholderFit: BoxFit.cover,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(
               vertical: AppPadding.p20, horizontal: AppPadding.p20),
@@ -28,7 +25,7 @@ class BestHotelsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 220),
+              const SizedBox(height: 120),
               Text(
                 hotelData.name,
                 style: Theme.of(context).textTheme.displayLarge,
@@ -40,11 +37,12 @@ class BestHotelsWidget extends StatelessWidget {
                     .textTheme
                     .displayMedium!
                     .copyWith(fontWeight: FontWeight.w400, fontSize: 18),
+                maxLines: 3,
               ),
               const SizedBox(height: 10),
             ],
           ),
-        )
+        ),
       ],
     );
   }

@@ -20,7 +20,6 @@ class IndicatorAndViewHotelBTN extends StatelessWidget {
             MainButton(
               text: "View Hotel",
               width: context.width / 2.8,
-              backgroundColor: ColorManager.error,
             ),
             SmoothPageIndicator(
               controller: boardController,

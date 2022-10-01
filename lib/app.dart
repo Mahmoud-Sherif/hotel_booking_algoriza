@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/features/auth/data/datasources/local/autl_local_data_source.dart';
-import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_widget.dart';
 import 'package:hotel_booking_algoriza/features/home/presentation/pages/home_view.dart';
 import 'package:hotel_booking_algoriza/features/intro/presentation/pages/splash_page.dart';
 import 'config/locale/app_localizations_setup.dart';
@@ -25,8 +24,8 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<LocaleCubit, LocaleState>(
           buildWhen: (previousState, currentState) {
-            return previousState != currentState;
-          }, builder: (context, state) {
+        return previousState != currentState;
+      }, builder: (context, state) {
         return MaterialApp(
           home: sl<AuthLocalDataSource>().isLogged
               ? const HomeView()
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: navigatorKey,
           supportedLocales: AppLocalizationsSetup.supportedLocales,
           localeResolutionCallback:
-          AppLocalizationsSetup.localeResolutionCallback,
+              AppLocalizationsSetup.localeResolutionCallback,
           localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
         );
       }),
