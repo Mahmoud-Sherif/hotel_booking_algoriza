@@ -14,7 +14,3 @@ class GetProfileUseCase implements  UseCase<ProfileModel, NoParams> {
   Future<Either<Failure, ProfileModel>> call(NoParams params) =>
       profileRepository.getProfile();
 }
-
-class GetProfileParams {
-
-}
