@@ -11,7 +11,6 @@ import '../cubit/search_cubit.dart';
 import 'filter_result_view.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-
 class FiltterScreen extends StatefulWidget {
   const FiltterScreen({super.key});
 
@@ -40,7 +39,7 @@ class _FiltterScreenState extends State<FiltterScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              MagicRouter.pop();
+              MagicRouter.navigateAndReplacement(const SearchScreen());
             },
             icon: const Icon(Icons.close_rounded),
           ),
@@ -48,310 +47,358 @@ class _FiltterScreenState extends State<FiltterScreen> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Text(
+                    Text(
                       AppLocalizations.of(context)!.translate('filter')!,
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
-                 const SizedBox(height: 15),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                       Text(
-                         AppLocalizations.of(context)!.translate('price_for_one_night')!,
-                        style:
-                            TextStyle(fontSize: 16, color: ColorManager.lightGrey),
-                      ),
-                      const SizedBox(height: 15),
-                      SliderTheme(
-                    data: const SliderThemeData(
-                      trackHeight: 3,
-                    ),
-                        child: RangeSlider(
-                          values: values,
-                          max: 1000,
-                          // min: 50,
-                          labels: RangeLabels(
-                            values.start.round().toString(),
-                            values.end.round().toString(),
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!
+                                .translate('price_for_one_night')!,
+                            style: TextStyle(
+                                fontSize: 16, color: ColorManager.lightGrey),
                           ),
-                          onChanged: (RangeValues value) {
-                            setState(() {
-                              values = value;
-                            });
-                          },
-                          divisions: 40,
-                          activeColor: ColorManager.primary,
-                          inactiveColor: ColorManager.grey,
-                        ),
-                      ),
-                      dividerWidget(0,0,1),
-                      const SizedBox(height: 10),
-                      Text(
-                        AppLocalizations.of(context)!.translate('popular_filter')!,
-                        style: TextStyle(
-                          color: ColorManager.lightGrey,
-                          fontSize: 16,
-                        ),
-                      ),
-                       Container(
-                         height: 150,
-                         child: Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               children: [
-                                 Flexible(
-                                   child: Row(
-                                     children: [
-                                       Checkbox(
-                                         checkColor: ColorManager.backGround,
-                                         fillColor:
-                                         MaterialStateProperty.all(ColorManager.primary),
-                                         activeColor: ColorManager.error,
-                                         value: isKitchen,
-                                         onChanged: (value) {
-                                           isKitchen = value!;
+                          const SizedBox(height: 15),
+                          SliderTheme(
+                            data: const SliderThemeData(
+                              trackHeight: 3,
+                            ),
+                            child: RangeSlider(
+                              values: values,
+                              max: 1000,
+                              // min: 50,
+                              labels: RangeLabels(
+                                values.start.round().toString(),
+                                values.end.round().toString(),
+                              ),
+                              onChanged: (RangeValues value) {
+                                setState(() {
+                                  values = value;
+                                });
+                              },
+                              divisions: 40,
+                              activeColor: ColorManager.primary,
+                              inactiveColor: ColorManager.grey,
+                            ),
+                          ),
+                          dividerWidget(0, 0, 1),
+                          const SizedBox(height: 10),
+                          Text(
+                            AppLocalizations.of(context)!
+                                .translate('popular_filter')!,
+                            style: TextStyle(
+                              color: ColorManager.lightGrey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Container(
+                            height: 150,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            checkColor: ColorManager.backGround,
+                                            fillColor:
+                                                MaterialStateProperty.all(
+                                                    ColorManager.primary),
+                                            activeColor: ColorManager.error,
+                                            value: isKitchen,
+                                            onChanged: (value) {
+                                              isKitchen = value!;
 
-                                           setState(() {});
-                                         },
-                                       ),
-                                       Text(
-                                         AppLocalizations.of(context)!.translate('kitchen')!,
-                                         style: const TextStyle(
-                                           fontSize: 15,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                                 Flexible(
-                                   child: Row(
-                                     children: [
-                                       Checkbox(
-                                         checkColor: ColorManager.backGround,
-                                         fillColor: MaterialStateProperty.all(
-                                             ColorManager.primary),
-                                         activeColor: ColorManager.error,
-                                         value: isSeaView,
-                                         onChanged: (value) {
-                                           setState(() {
-                                             isSeaView = value!;
-                                           });
-                                         },
-                                       ),
-                                       Text(
-                                         AppLocalizations.of(context)!.translate('sea_view')!,
-                                         style: const TextStyle(
-                                           fontSize: 15,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 )
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               children: [
-                                 Flexible(
-                                   child: Row(
-                                     children: [
-                                       Checkbox(
-                                           checkColor: ColorManager.backGround,
-                                           fillColor: MaterialStateProperty.all(
-                                               ColorManager.primary),
-                                           activeColor: ColorManager.error,
-                                           value: isAC,
-                                           onChanged: (value) {
-                                             setState(() {
-                                               isAC = value!;
-                                             });
-                                           }),
-                                       Text(
-                                         AppLocalizations.of(context)!.translate('a_c')!,
-                                         style: TextStyle(
-                                           fontSize: 15,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                                 Flexible(
-                                   child: Row(
-                                     children: [
-                                       Checkbox(
-                                           checkColor: ColorManager.backGround,
-                                           fillColor: MaterialStateProperty.all(
-                                               ColorManager.primary),
-                                           activeColor: ColorManager.error,
-                                           value: isWifi,
-                                           onChanged: (value) {
-                                             setState(() {
-                                               isWifi = value!;
-                                             });
-                                           }),
-                                       Text(
-                                         AppLocalizations.of(context)!.translate('wifi')!,
-                                         style: TextStyle(
-                                           fontSize: 15,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 )
-                               ],
-                             ),
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               children: [
-                                 Flexible(
-                                   child: Row(
-                                     children: [
-                                       Checkbox(
-                                           checkColor: ColorManager.backGround,
-                                           fillColor: MaterialStateProperty.all(
-                                               ColorManager.primary),
-                                           activeColor: ColorManager.error,
-                                           value: isParking,
-                                           onChanged: (value) {
-                                             setState(() {
-                                               isParking = value!;
-                                             });
-                                           }),
-                                       Text(
-                                         AppLocalizations.of(context)!.translate('parking')!,
-                                         style: TextStyle(
-                                           fontSize: 15,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                                 Flexible(
-                                   child: Row(
-                                     children: [
-                                       Checkbox(
-                                           checkColor: ColorManager.backGround,
-                                           fillColor: MaterialStateProperty.all(
-                                               ColorManager.primary),
-                                           activeColor: ColorManager.error,
-                                           value: isGarden,
-                                           onChanged: (value) {
-                                             setState(() {
-                                               isGarden = value!;
-                                             });
-                                           }),
-                                       Text(
-                                         AppLocalizations.of(context)!.translate('garden')!,
-                                         style: TextStyle(
-                                           fontSize: 15,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                               ],
-                             ),
-                           ],
-                         ),
-                       ),
-
-
-                      dividerWidget(0,0,1),
-                      const SizedBox(height: 20),
-                      Text(
-                        AppLocalizations.of(context)!.translate('distance_from_city_center')!,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      SliderTheme(
-                        data: SliderThemeData(
-                          trackHeight: 3,
-
-                        ),
-                        child: Slider(
-                            activeColor: ColorManager.primary,
-                            inactiveColor: ColorManager.grey,
-                            label: "Less than ${distance.round().toString()} km",
-                            divisions: 100,
-                            value: distance,
-                            max: 25.0,
-                            //min: 5
-                            onChanged: (value) {
+                                              setState(() {});
+                                            },
+                                          ),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .translate('kitchen')!,
+                                            style: const TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            checkColor: ColorManager.backGround,
+                                            fillColor:
+                                                MaterialStateProperty.all(
+                                                    ColorManager.primary),
+                                            activeColor: ColorManager.error,
+                                            value: isSeaView,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                isSeaView = value!;
+                                              });
+                                            },
+                                          ),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .translate('sea_view')!,
+                                            style: const TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                              checkColor:
+                                                  ColorManager.backGround,
+                                              fillColor:
+                                                  MaterialStateProperty.all(
+                                                      ColorManager.primary),
+                                              activeColor: ColorManager.error,
+                                              value: isAC,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isAC = value!;
+                                                });
+                                              }),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .translate('a_c')!,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                              checkColor:
+                                                  ColorManager.backGround,
+                                              fillColor:
+                                                  MaterialStateProperty.all(
+                                                      ColorManager.primary),
+                                              activeColor: ColorManager.error,
+                                              value: isWifi,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isWifi = value!;
+                                                });
+                                              }),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .translate('wifi')!,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                              checkColor:
+                                                  ColorManager.backGround,
+                                              fillColor:
+                                                  MaterialStateProperty.all(
+                                                      ColorManager.primary),
+                                              activeColor: ColorManager.error,
+                                              value: isParking,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isParking = value!;
+                                                });
+                                              }),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .translate('parking')!,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                              checkColor:
+                                                  ColorManager.backGround,
+                                              fillColor:
+                                                  MaterialStateProperty.all(
+                                                      ColorManager.primary),
+                                              activeColor: ColorManager.error,
+                                              value: isGarden,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isGarden = value!;
+                                                });
+                                              }),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .translate('garden')!,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          dividerWidget(0, 0, 1),
+                          const SizedBox(height: 20),
+                          Text(
+                            AppLocalizations.of(context)!
+                                .translate('distance_from_city_center')!,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          SliderTheme(
+                            data: SliderThemeData(
+                              trackHeight: 3,
+                            ),
+                            child: Slider(
+                                activeColor: ColorManager.primary,
+                                inactiveColor: ColorManager.grey,
+                                label:
+                                    "Less than ${distance.round().toString()} km",
+                                divisions: 100,
+                                value: distance,
+                                max: 25.0,
+                                //min: 5
+                                onChanged: (value) {
+                                  setState(() {
+                                    distance = value;
+                                  });
+                                }),
+                          ),
+                          dividerWidget(0, 0, 1),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!
+                                .translate('type_of_accommodation')!,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          flutterSwitch(
+                            AppLocalizations.of(context)!.translate('all')!,
+                            myValue,
+                            (val) {
                               setState(() {
-                                distance = value;
+                                myValue = val;
                               });
-                            }),
+                            },
+                          ),
+                          const SizedBox(height: 15),
+                          dividerWidget(0, 0, 1),
+                          const SizedBox(height: 15),
+                          flutterSwitch(
+                            AppLocalizations.of(context)!
+                                .translate('apartment')!,
+                            myValue,
+                            (val) {
+                              setState(() {
+                                myValue = val;
+                              });
+                            },
+                          ),
+                          const SizedBox(height: 25),
+                          flutterSwitch(
+                            AppLocalizations.of(context)!.translate('home')!,
+                            myValue,
+                            (val) {
+                              setState(() {
+                                myValue = val;
+                              });
+                            },
+                          ),
+                          const SizedBox(height: 25),
+                          flutterSwitch(
+                            AppLocalizations.of(context)!.translate('villa')!,
+                            myValue,
+                            (val) {
+                              setState(() {
+                                myValue = val;
+                              });
+                            },
+                          ),
+                          const SizedBox(height: 25),
+                          flutterSwitch(
+                            AppLocalizations.of(context)!.translate('hotel')!,
+                            myValue,
+                            (val) {
+                              setState(() {
+                                myValue = val;
+                              });
+                            },
+                          ),
+                          const SizedBox(height: 25),
+                          flutterSwitch(
+                            AppLocalizations.of(context)!.translate('resort')!,
+                            myValue,
+                            (val) {
+                              setState(() {
+                                myValue = val;
+                              });
+                            },
+                          ),
+                        ],
                       ),
-                      dividerWidget(0,0,1),
-                     const SizedBox(
-                        height: 10,
-                      ),
-                       Text(
-                        AppLocalizations.of(context)!.translate('type_of_accommodation')!,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      flutterSwitch(AppLocalizations.of(context)!.translate('all')!, myValue,(val) {
-                        setState(() {
-                          myValue = val;
-                        });
-                      },),
-                      const SizedBox(height: 15),
-                      dividerWidget(0,0,1),
-                      const SizedBox(height: 15),
-                      flutterSwitch(AppLocalizations.of(context)!.translate('apartment')!, myValue,(val) {
-                        setState(() {
-                          myValue = val;
-                        });
-                      },),
-                      const SizedBox(height: 25),
-                      flutterSwitch(AppLocalizations.of(context)!.translate('home')!, myValue,(val) {
-                     setState(() {
-                          myValue = val;
-                        });
-                      },),
-                      const SizedBox(height: 25),
-                      flutterSwitch(AppLocalizations.of(context)!.translate('villa')!, myValue,(val) {
-                        setState(() {
-                          myValue = val;
-                        });
-                      },),
-                      const SizedBox(height: 25),
-                      flutterSwitch(AppLocalizations.of(context)!.translate('hotel')!, myValue,(val) {
-                        setState(() {
-                          myValue = val;
-                        });
-                      },),
-                      const SizedBox(height: 25),
-                      flutterSwitch(AppLocalizations.of(context)!.translate('resort')!, myValue,(val) {
-                        setState(() {
-                          myValue = val;
-                        });
-                      },),
-                    ],
-                  ),
-                ),
+                    ),
                     const SizedBox(height: 25),
-              ]),
+                  ]),
             ),
           ),
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 20.0,right: 20.0,left: 20.0,top: 10),
+          padding: const EdgeInsets.only(
+              bottom: 20.0, right: 20.0, left: 20.0, top: 10),
           child: SizedBox(
             height: 50,
             width: double.infinity,
@@ -383,8 +430,8 @@ class _FiltterScreenState extends State<FiltterScreen> {
                     MagicRouter.navigateAndReplacement(
                       FilterResultView(
                           searchedForHotels:
-                          BlocProvider.of<SearchCubit>(context)
-                              .searchedForHotels!),
+                              BlocProvider.of<SearchCubit>(context)
+                                  .searchedForHotels!),
                     );
                   },
                   child: const Text("Apply"),
@@ -396,11 +443,12 @@ class _FiltterScreenState extends State<FiltterScreen> {
       ),
     );
   }
-Widget flutterSwitch(String text, bool value , Function(bool) onToggle){
+
+  Widget flutterSwitch(String text, bool value, Function(bool) onToggle) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-         Text(
+        Text(
           text,
           style: const TextStyle(
             color: Colors.white,
@@ -410,18 +458,17 @@ Widget flutterSwitch(String text, bool value , Function(bool) onToggle){
         //const SizedBox(width: 240),
         Container(
           child: FlutterSwitch(
-            width: 52.0,
-            height: 32.0,
-            toggleSize: 28.0,
-            value: value,
-            borderRadius: 30.0,
-            padding: 2.0,
-            activeColor: Color(0xFF4ebb9c),
-            inactiveColor:Color(0xFF38383a),
-            //inactiveToggleColor: Color(0xFFffffff),
-            //showOnOff: true,
-            onToggle: onToggle
-          ),
+              width: 52.0,
+              height: 32.0,
+              toggleSize: 28.0,
+              value: value,
+              borderRadius: 30.0,
+              padding: 2.0,
+              activeColor: Color(0xFF4ebb9c),
+              inactiveColor: Color(0xFF38383a),
+              //inactiveToggleColor: Color(0xFFffffff),
+              //showOnOff: true,
+              onToggle: onToggle),
         )
       ],
     );

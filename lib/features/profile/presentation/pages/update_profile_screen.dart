@@ -36,7 +36,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1a1a1a),
+      backgroundColor: const Color(0xFF1a1a1a),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -60,39 +60,42 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 size: 30,
                               )),
                           IconButton(
-                              onPressed: () async{
+                              onPressed: () async {
                                 await BlocProvider.of<ProfileCubit>(context)
                                     .uploadFile(
                                   //ProfileParams(
                                   name: nameController.text,
                                   email: emailController.text,
                                   filePath:
-                                  BlocProvider.of<ProfileCubit>(context).image,
+                                      BlocProvider.of<ProfileCubit>(context)
+                                          .image,
                                   //BlocProvider.of<ProfileCubit>(context).uploadImage(ImageSource.gallery),
                                   //),
-                                ).then((value) {
+                                )
+                                    .then((value) {
                                   showDialog(
                                       context: context,
                                       builder: (context) {
                                         return CupertinoAlertDialog(
-                                          title: const Text('Edit User Profile Data '),
-                                          content: const Text('User Data Updated'),
+                                          title: const Text(
+                                              'Edit User Profile Data '),
+                                          content:
+                                              const Text('User Data Updated'),
                                           actions: <Widget>[
                                             TextButton(
                                                 onPressed: () {
-
                                                   MagicRouter.navigateAndPopAll(
                                                       const HomeView());
                                                 },
                                                 child: const Text(
                                                   'Ok',
-                                                  style: TextStyle(fontSize: 20),
+                                                  style:
+                                                      TextStyle(fontSize: 20),
                                                 )),
                                           ],
                                         );
                                       });
                                 });
-
                               },
                               icon: const Icon(
                                 Icons.done_rounded,
@@ -101,22 +104,19 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               )),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
+                      const SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
                         child: Text(
-                         AppLocalizations.of(context)!.translate('edit_profile')!,
+                          AppLocalizations.of(context)!
+                              .translate('edit_profile')!,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w800,
                               fontSize: 20),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       Center(
                         child: SizedBox(
                           height: 120,
@@ -154,31 +154,34 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       UpdateProfileItemWidget(
-                          text: AppLocalizations.of(context)!.translate('user_name')!,
+                          text: AppLocalizations.of(context)!
+                              .translate('user_name')!,
                           controller: nameController,
                           hintText: "${state.profileModel.user.name}"),
                       dividerWidget(15, 15, 1),
                       UpdateProfileItemWidget(
-                          text: AppLocalizations.of(context)!.translate('email')!,
+                          text:
+                              AppLocalizations.of(context)!.translate('email')!,
                           controller: emailController,
                           hintText: "${state.profileModel.user.email}"),
                       dividerWidget(15, 15, 1),
                       UpdateProfileItemWidget(
-                          text: AppLocalizations.of(context)!.translate('phone')!,
+                          text:
+                              AppLocalizations.of(context)!.translate('phone')!,
                           controller: phoneController,
                           hintText: "+966 3436575739"),
                       dividerWidget(15, 15, 1),
                       UpdateProfileItemWidget(
-                          text: AppLocalizations.of(context)!.translate('date_of_birth')!,
+                          text: AppLocalizations.of(context)!
+                              .translate('date_of_birth')!,
                           controller: dateOfBirthController,
                           hintText: "20,Sep 1999"),
                       dividerWidget(15, 15, 1),
                       UpdateProfileItemWidget(
-                          text: AppLocalizations.of(context)!.translate('address')!,
+                          text: AppLocalizations.of(context)!
+                              .translate('address')!,
                           controller: addressController,
                           hintText: "Egypt, Cairo"),
                       dividerWidget(15, 15, 1),

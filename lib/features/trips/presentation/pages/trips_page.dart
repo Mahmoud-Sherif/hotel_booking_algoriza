@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking_algoriza/core/api/api_consumer.dart';
+import 'package:hotel_booking_algoriza/core/widgets/progrees_indicator.dart';
 import 'package:hotel_booking_algoriza/features/trips/presentation/cubit/trips_cubit.dart';
 import 'package:hotel_booking_algoriza/features/trips/presentation/widgets/cancelled.dart';
 import 'package:hotel_booking_algoriza/features/trips/presentation/widgets/finished.dart';
@@ -23,9 +24,7 @@ class TripsPage extends StatelessWidget {
       child: BlocBuilder<TripsCubit, TripsState>(
         builder: (context, state) {
           return state is TripsLoadingState
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? const CustmProgreesIndicator()
               : Scaffold(
                   backgroundColor: const Color(0xFF1a1a1a),
                   appBar: AppBar(
