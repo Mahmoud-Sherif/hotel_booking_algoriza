@@ -15,10 +15,11 @@ class RawMaterialButtonWidget extends StatelessWidget {
       onPressed: pressed,
       elevation: 2.0,
       fillColor: fillColor,
+
       child: Icon(
         icon,
         color: iconColor,
-        size: 30,
+        size: 25,
       ),
       padding: EdgeInsets.all(15.0),
       shape: CircleBorder(),

@@ -14,10 +14,10 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit({
     required this.loginUseCase,
     required this.registerUseCase,
+
   }) : super(AuthInitial());
   final LoginUseCase loginUseCase;
   final RegisterUseCase registerUseCase;
-
   Future<void> login(LoginParams params) async {
     emit(LoginLodaing());
     Either<Failure, LoginModel> response = await loginUseCase(params);
