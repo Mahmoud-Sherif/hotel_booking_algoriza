@@ -16,6 +16,7 @@ import 'package:hotel_booking_algoriza/features/explore/presentation/cubit/explo
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../config/locale/app_localizations.dart';
+import '../../../../core/widgets/progrees_indicator.dart';
 import '../../../../injection_container.dart';
 import '../../../filter/presentation/pages/search_view.dart';
 import 'hotel_details_screen.dart';
@@ -36,9 +37,7 @@ class ExploreView extends StatelessWidget {
       child: BlocBuilder<ExploreCubit, ExploreState>(
         builder: (context, state) {
           if (state is ExploreHotelsLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const CustmProgreesIndicator();
           } else if (state is ExploreHotelsError) {
             return Center(
               child: Text(

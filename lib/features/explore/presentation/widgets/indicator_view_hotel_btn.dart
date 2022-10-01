@@ -17,9 +17,11 @@ class IndicatorAndViewHotelBTN extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MainButton(
-              text: "View Hotel",
-              width: context.width / 2.8,
+            SizedBox(
+              height: 45,
+              width: context.width / 3,
+              child: ElevatedButton(
+                  onPressed: () {}, child: const Text('Veiw Hotel')),
             ),
             SmoothPageIndicator(
               controller: boardController,

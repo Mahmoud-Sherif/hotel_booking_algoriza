@@ -6,6 +6,7 @@ import 'values_manager.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
+    dialogBackgroundColor: ColorManager.primary,
     // main colors
     scaffoldBackgroundColor: ColorManager.backGround,
     primaryColor: ColorManager.primary,
@@ -113,6 +114,7 @@ ThemeData getApplicationTheme() {
       selectedItemColor: ColorManager.primary,
       selectedIconTheme: IconThemeData(size: AppSize.s30),
     ),
+
     // // label style
   );
 }

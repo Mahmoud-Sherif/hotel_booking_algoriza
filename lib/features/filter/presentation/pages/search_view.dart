@@ -4,6 +4,7 @@ import 'package:hotel_booking_algoriza/config/routes/magic_router.dart';
 import 'package:hotel_booking_algoriza/core/api/api_consumer.dart';
 import 'package:hotel_booking_algoriza/core/utils/color_manager.dart';
 import 'package:hotel_booking_algoriza/core/utils/media_query_values.dart';
+import 'package:hotel_booking_algoriza/core/widgets/progrees_indicator.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/cubit/search_cubit.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/pages/filter_view.dart';
 import 'package:hotel_booking_algoriza/features/filter/presentation/widgets/map_widget.dart';
@@ -113,17 +114,14 @@ class _SearchScreenState extends State<SearchScreen> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
+                      const SizedBox(height: 5),
                       Text(
                         //'23, Sep - 28, Oct',
                         AppLocalizations.of(context)!.translate('date')!,
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500
-                        ),
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -138,7 +136,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       Text(
                         AppLocalizations.of(context)!
                             .translate('number_of_room')!,
-                        style:  TextStyle(
+                        style: TextStyle(
                           color: Colors.grey.shade500,
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
@@ -163,7 +161,6 @@ class _SearchScreenState extends State<SearchScreen> {
             const SizedBox(
               height: 20,
             ),
-
             BlocBuilder<SearchCubit, SearchStates>(
               builder: (context, state) {
                 return state is SearchToMapstate
@@ -181,19 +178,16 @@ class _SearchScreenState extends State<SearchScreen> {
                                   return state is SearchLoadingState
                                       ? Text(
                                           '0 ${AppLocalizations.of(context)!.translate('hotel_found')!}',
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500
-                                    ),
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500),
                                         )
                                       : Text(
                                           '${BlocProvider.of<SearchCubit>(context).searchedForHotels!.hotelModel.search.length}  ${AppLocalizations.of(context)!.translate('hotel_found')!}',
                                           style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                              fontWeight: FontWeight.w600
-
-                                          ),
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600),
                                         );
                                 }),
                                 Row(
@@ -202,10 +196,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                       AppLocalizations.of(context)!
                                           .translate('filter')!,
                                       style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                          fontWeight: FontWeight.w600
-                                      ),
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                     IconButton(
                                       onPressed: () =>
@@ -231,13 +224,9 @@ class _SearchScreenState extends State<SearchScreen> {
               builder: (context, state) {
                 final marker = BlocProvider.of<SearchCubit>(context).markers;
                 return state is SearchToMapstate
-                    ? MapTest(
-                        markers: marker,
-                      )
+                    ? MapTest(markers: marker)
                     : state is SearchLoadingState
-                        ? const Center(
-                            child: CircularProgressIndicator(),
-                          )
+                        ? const CustmProgreesIndicator()
                         : Expanded(
                             child: ListView.builder(
                               itemCount: BlocProvider.of<SearchCubit>(context)
