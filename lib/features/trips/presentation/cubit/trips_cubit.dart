@@ -35,11 +35,12 @@ class TripsCubit extends Cubit<TripsState> {
 
   void getAllHotelsByTypeCompleted() async {
     emit(TripsLoadingState());
-    final response =
-        await apiConsumer.get(EndPoints.getBooking, queryParameters: {
-      'type': 'completed',
-      'count': '10',
-    },
+    final response = await apiConsumer.get(
+      EndPoints.getBooking,
+      queryParameters: {
+        'type': 'completed',
+        'count': '10',
+      },
     );
 
     completedHotels = BookingHotelsModel.fromJson(response);

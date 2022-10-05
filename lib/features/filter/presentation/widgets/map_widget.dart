@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hotel_booking_algoriza/config/location_services/location_services.dart';
+import 'package:hotel_booking_algoriza/core/widgets/progrees_indicator.dart';
 
 class MapTest extends StatefulWidget {
   const MapTest({super.key, required this.markers});
@@ -19,7 +20,7 @@ class _MapTestState extends State<MapTest> {
     target: LatLng(position!.latitude, position!.longitude),
     bearing: 0.0,
     tilt: 0.0,
-    zoom: 8,
+    zoom: 5,
   );
   Future<void> getCurrentLocation() async {
     await LocationServices.getCurrentLocation();
@@ -66,11 +67,7 @@ class _MapTestState extends State<MapTest> {
 
   @override
   Widget build(BuildContext context) {
-    return position != null
-        ? buildMap()
-        : const Center(
-            child: CircularProgressIndicator(),
-          );
+    return position != null ? buildMap() : const CustmProgreesIndicator();
   }
 }
 // floatingActionButton: Container(
