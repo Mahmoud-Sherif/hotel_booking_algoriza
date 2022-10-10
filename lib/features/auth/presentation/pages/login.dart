@@ -15,6 +15,7 @@ import 'package:hotel_booking_algoriza/injection_container.dart';
 import '../../../../core/widgets/custom_input_field.dart';
 import '../../../../core/widgets/progrees_indicator.dart';
 import '../cubit/auth_cubit.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -54,44 +55,45 @@ class LoginView extends StatelessWidget {
                               'Login',
                               style: Theme.of(context).textTheme.displayLarge,
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 25),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 LoginOrSignupWith(
                                   tittle: 'Facebook',
-                                  icon: Icons.facebook,
+                                  icon: EvaIcons.facebook,
                                   onPressed: () {},
-                                  backgroundColor: Colors.blue[800],
+                                  backgroundColor: Color(0xFF3b5699),
                                 ),
                                 LoginOrSignupWith(
                                   tittle: 'Twitter',
-                                  icon: Icons.facebook,
+                                  icon: EvaIcons.twitter,
                                   onPressed: () {},
-                                  backgroundColor: Colors.blue[500],
+                                  backgroundColor: Color(0xFF05a9f0),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 15),
                             Center(
                               child: Text(
                                 'or log in with email',
-                                style: Theme.of(context).textTheme.displaySmall,
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272),fontSize: 13),
                               ),
                             ),
                             const SizedBox(height: 20),
                             Text(
                               'Your email',
-                              style: Theme.of(context).textTheme.displaySmall,
+                              style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272), fontWeight: FontWeight.w500),
                             ),
                             CustomInputField(
                               hintText: 'enter email',
                               inputController: _conEmail,
                               // formKey: _keyForm,
                             ),
+                            SizedBox(height:8),
                             Text(
                               'Password',
-                              style: Theme.of(context).textTheme.displaySmall,
+                              style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272), fontWeight: FontWeight.w500),
                             ),
                             CustomInputField(
                               hintText: 'enter password',
@@ -102,7 +104,7 @@ class LoginView extends StatelessWidget {
                               alignment: Alignment.centerRight,
                               child: TextButton(
                                   onPressed: () {},
-                                  child: const Text('Forgot your Password ?')),
+                                  child: const Text('Forgot your Password?', style: TextStyle(color: Color(0xFF727272),),)),
                             ),
                             BlocBuilder<AuthCubit, AuthState>(
                               builder: (context, state) {

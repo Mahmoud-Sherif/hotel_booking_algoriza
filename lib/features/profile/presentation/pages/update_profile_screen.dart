@@ -10,6 +10,7 @@ import '../../../lang/presentation/cubit/locale_cubit.dart';
 import '../cubit/profile_cubit.dart';
 import '../widgets/divider_widget.dart';
 import '../widgets/update_profile_item_widget.dart';
+import 'package:hotel_booking_algoriza/features/profile/presentation/pages/profile_screen.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   UpdateProfileScreen({Key? key}) : super(key: key);
@@ -85,7 +86,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             TextButton(
                                                 onPressed: () {
                                                   MagicRouter.navigateAndPopAll(
-                                                      const HomeView());
+                                                       HomeView());
                                                 },
                                                 child: const Text(
                                                   'Ok',
@@ -171,13 +172,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           text:
                               AppLocalizations.of(context)!.translate('phone')!,
                           controller: phoneController,
-                          hintText: "+966 3436575739"),
+                          hintText: "01156827237"),
                       dividerWidget(15, 15, 1),
                       UpdateProfileItemWidget(
                           text: AppLocalizations.of(context)!
                               .translate('date_of_birth')!,
                           controller: dateOfBirthController,
-                          hintText: "20,Sep 1999"),
+                          hintText: "20, Sep 1999"),
                       dividerWidget(15, 15, 1),
                       UpdateProfileItemWidget(
                           text: AppLocalizations.of(context)!

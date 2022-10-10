@@ -80,6 +80,7 @@ class _SplashPageState extends State<SplashPage> {
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -115,8 +116,9 @@ class _SplashPageState extends State<SplashPage> {
                       const Text(
                         'Already have account?',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 15,
                           color: Colors.white,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       TextButton(
@@ -126,8 +128,9 @@ class _SplashPageState extends State<SplashPage> {
                         child: const Text(
                           'Log in',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 15,
                             color: Colors.white,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),

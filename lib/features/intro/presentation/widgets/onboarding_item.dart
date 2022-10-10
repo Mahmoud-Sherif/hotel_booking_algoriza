@@ -35,7 +35,7 @@ class OnBoardingItem extends StatelessWidget {
           model.body,
           style: const TextStyle(
             fontSize: 16.0,
-            color: Colors.grey,
+            color: Color(0xFF6c6c6c),
           ),
           textAlign: TextAlign.center,
         ),

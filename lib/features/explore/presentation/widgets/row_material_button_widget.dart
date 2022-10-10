@@ -21,7 +21,7 @@ class RawMaterialButtonWidget extends StatelessWidget {
         color: iconColor,
         size: 25,
       ),
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(10.0),
       shape: CircleBorder(),
     );
   }

@@ -17,7 +17,7 @@ class LoginOrSignupWith extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        fixedSize: Size(MediaQuery.of(context).size.width / 2.5, 40),
+        fixedSize: Size(MediaQuery.of(context).size.width / 2.3, 48),
         backgroundColor: backgroundColor,
         shadowColor: Colors.black,
         elevation: 10,
@@ -29,6 +29,7 @@ class LoginOrSignupWith extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(icon),
+            SizedBox(width:2),
             Text(tittle),
           ],
         ),

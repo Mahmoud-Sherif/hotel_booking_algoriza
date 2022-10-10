@@ -34,7 +34,7 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
+      backgroundColor: Color(0xFF1a1a1a),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -111,7 +111,7 @@ class OnBoardingPage extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Color(0xFF2c2c2c),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),
@@ -119,7 +119,10 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                   child: const Text(
                     'Create account',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),

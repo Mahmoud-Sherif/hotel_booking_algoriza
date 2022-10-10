@@ -9,6 +9,7 @@ import 'package:hotel_booking_algoriza/features/auth/presentation/cubit/auth_cub
 import 'package:hotel_booking_algoriza/features/auth/presentation/pages/login.dart';
 import 'package:hotel_booking_algoriza/features/auth/presentation/widgets/login_signup_with.dart';
 import 'package:hotel_booking_algoriza/features/home/presentation/pages/home_view.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 import '../../../../core/widgets/custom_input_field.dart';
 import '../../../../injection_container.dart';
@@ -39,63 +40,66 @@ class SignupView extends StatelessWidget {
                         children: [
                           Text(
                             'Sign up',
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 22),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 30),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               LoginOrSignupWith(
                                 tittle: 'Facebook',
-                                icon: Icons.facebook,
+                                icon: EvaIcons.facebook,
                                 onPressed: () {},
-                                backgroundColor: Colors.blue[800],
+                                backgroundColor: Color(0xFF3b5699),
                               ),
                               LoginOrSignupWith(
                                 tittle: 'Twitter',
-                                icon: Icons.facebook,
+                                icon: EvaIcons.twitter,
                                 onPressed: () {},
-                                backgroundColor: Colors.blue[500],
+                                backgroundColor: Color(0xFF05a9f0),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 15),
                           Center(
                             child: Text(
                               'or log in with email',
-                              style: Theme.of(context).textTheme.displaySmall,
+                              style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272),fontSize: 13),
                             ),
                           ),
                           const SizedBox(height: 20),
                           Text(
                             'First name',
-                            style: Theme.of(context).textTheme.displaySmall,
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272), fontWeight: FontWeight.w500),
                           ),
                           CustomInputField(
-                              hintText: 'enter first name',
+                              hintText: 'Enter first name',
                               inputController: _conFirstName),
+                          SizedBox(height:8),
                           Text(
                             'Last name',
-                            style: Theme.of(context).textTheme.displaySmall,
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272), fontWeight: FontWeight.w500),
                           ),
                           CustomInputField(
-                              hintText: 'enter last name',
+                              hintText: 'Enter last name',
                               inputController: _conLastName),
+                          SizedBox(height:8),
                           Text(
                             'Your email',
-                            style: Theme.of(context).textTheme.displaySmall,
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272), fontWeight: FontWeight.w500),
                           ),
                           CustomInputField(
-                              hintText: 'enter email',
+                              hintText: 'Enter your email',
                               inputController: _conEmail),
+                          SizedBox(height:8),
                           Text(
                             'Password',
-                            style: Theme.of(context).textTheme.displaySmall,
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272), fontWeight: FontWeight.w500),
                           ),
                           CustomInputField(
-                              hintText: 'enter password',
+                              hintText: 'Enter password',
                               inputController: _conPassword),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 15),
                           BlocBuilder<AuthCubit, AuthState>(
                             builder: (context, state) {
                               return MainButton(
@@ -116,18 +120,18 @@ class SignupView extends StatelessWidget {
                               );
                             },
                           ),
-                          const SizedBox(height: 5),
+                          const SizedBox(height: 20),
                           Center(
                             child: Text(
-                              "By signing up, you agreed ",
-                              style: Theme.of(context).textTheme.displaySmall,
+                              "By signing up, you agreed with our terms of",
+                              style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272)),
                             ),
                           ),
                           const SizedBox(height: 2),
                           Center(
                             child: Text(
-                              "with our TOS and PP",
-                              style: Theme.of(context).textTheme.displaySmall,
+                              "Services and privacy policy",
+                              style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272)),
                             ),
                           ),
                           Center(
@@ -135,9 +139,9 @@ class SignupView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Already have account ?',
+                                  'Already have account?',
                                   style:
-                                      Theme.of(context).textTheme.displaySmall,
+                                      Theme.of(context).textTheme.displaySmall!.copyWith(color: Color(0xFF727272)),
                                 ),
                                 TextButton(
                                   onPressed: () {
